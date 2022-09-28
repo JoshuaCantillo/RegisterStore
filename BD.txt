@@ -1,0 +1,102 @@
+-Tabla TIENDAS:
+	+idTienda
+	+Nombre
+	+Dirección
+	+Telefono
+	
+-Tabla USUARIOS:
+	+idUsuario
+	+usuario
+	+clave
+	+tipo
+		*Superadmin
+		*Admin
+		*User
+	+tienda
+
+-Tabla PRODUCTOS:
+	+idProducto
+	+codigo
+	+nombre
+	+laboratorio
+	+presentacion
+	+cantidad
+	+precio de venta
+	+precio de compra
+	+iva
+	+tienda
+
+-Tabla PROVEEDORES:
+	+idProveedor
+	+nombre
+	+tipo
+	+empresa
+	+celular
+
+-Tabla Pedidos:
+	+idPedido
+	+idproveedor
+	+total
+	+subtotal
+	+fecha
+	+hora
+	+estado
+		*enviado
+		*recibido
+		*pagado
+	+fecha de pago
+	+tienda
+
+-Tabla subpedidos: SELECT S.idproveedor,P.nombre,P.laboratorio,P.presentacion,P.cantidad FROM productos as P INNER JOIN subpedidos as S ON P.idproducto=S.idproducto WHERE idpedido=1
+
+	+idpedido
+	+idproveedor
+	+idproducto
+	+unidades
+	+compra
+	+descuento
+	+total
+
+TABLA ventas:
+	+idventa
+	+fecha
+	+hora
+	+total
+	+subtotal
+	+descuento
+	+abono
+	+medio
+	+estado
+	+tienda
+
+TABLA subventas:
+	+idventa
+	+idproducto
+	+unidades
+	+total
+	+subtotal
+	+descuento
+
+	
+NOTAS
+
+*Tabla intermedia para el stock de los productos con 3 campos (idproducto,tienda,stock) usando un inner JOIN 
+	---SELECT * from productos P JOIN existencias ON P.idProducto WHERE codigo like'arg' or nombre like 'arg'---
+
+*Cuando se reciba un pedido,posterior a la confirmación del pedido se debe actualizar la tabla existencias sumando a cada producto (del pedido) la cantidad de unidades que se recibieron 
+	¡¡¡¡UNICAMENTE SI SE MARCA EL PEDIDO COMO CANCELADO O RECIBIDO!!!
+
+*al registrar un pedido se debe poder editar el datagrid para poder ingresar las unidades, si tiene un descuento adicional el producto o si tiene unidades gratis o adicionales
+
+*En el modulo de pedidos se debe poner un botón para un subForm para ver peidos anteriores según la fecha o empresa , al seleccionar el pedido los datos y productos de ese pedido se cargaran al modulo de pedidos.
+
+SqlCommand sql = new SqlCommand(String.Format("SELECT P.*, E.stock,E.tienda from productos as P INNER JOIN existencias as E ON P.idproducto=E.idproducto  WHERE (codigo like'%" + arg + "%' or nombre like '%" + arg + "%' or laboratorio like '%" + arg + "%') and tienda like '%"+Tienda+"%' "), conexion.conectar());
+ 
+
+
+
+SELECT P.idproducto,P.nombre,P.laboratorio,P.presentacion,P.cantidad,P.compra,E.stock FROM productos as P INNER JOIN existencias as E ON P.idproducto=E.idproducto INNER JOIN subproveedores as S ON P.idproducto=S.idproducto WHERE S.idproveedor= and (P.nombre like '%%' or P.laboratorio like '%%' or P.codigo like '%%') and tienda=
+
+
+
+Hacer que al crear una tienda se añada como proveedor asignandole todos los productos ,en pedidos validar si al seleccionar el proveedor es una de las tiendas ,de ser así se descontará el producto del stock de dicha tienda de ser posible
