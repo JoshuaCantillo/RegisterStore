@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subbuscarProductos));
             this.lbiconoContador = new System.Windows.Forms.Label();
             this.lbcontador = new System.Windows.Forms.Label();
             this.guna2Separator5 = new Guna.UI2.WinForms.Guna2Separator();
@@ -107,15 +108,12 @@
             this.txtbuscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtbuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtbuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtbuscar.DisabledState.Parent = this.txtbuscar;
             this.txtbuscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtbuscar.FillColor = System.Drawing.SystemColors.Control;
             this.txtbuscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtbuscar.FocusedState.Parent = this.txtbuscar;
             this.txtbuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtbuscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtbuscar.HoverState.Parent = this.txtbuscar;
             this.txtbuscar.IconLeft = global::RegisterStore.Properties.Resources.buscar_32;
             this.txtbuscar.IconLeftOffset = new System.Drawing.Point(20, 0);
             this.txtbuscar.IconLeftSize = new System.Drawing.Size(25, 25);
@@ -126,7 +124,6 @@
             this.txtbuscar.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtbuscar.PlaceholderText = "BUSCAR PRODUCTOS";
             this.txtbuscar.SelectedText = "";
-            this.txtbuscar.ShadowDecoration.Parent = this.txtbuscar;
             this.txtbuscar.Size = new System.Drawing.Size(410, 50);
             this.txtbuscar.TabIndex = 35;
             this.txtbuscar.TextOffset = new System.Drawing.Point(10, 0);
@@ -141,12 +138,7 @@
             this.tbproductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbproductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tbproductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.tbproductos.BackgroundColor = System.Drawing.Color.White;
-            this.tbproductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbproductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.tbproductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,6 +148,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.tbproductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tbproductos.ColumnHeadersHeight = 50;
+            this.tbproductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,7 +157,6 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tbproductos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.tbproductos.EnableHeadersVisualStyles = false;
             this.tbproductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tbproductos.Location = new System.Drawing.Point(26, 101);
             this.tbproductos.Name = "tbproductos";
@@ -180,10 +172,8 @@
             this.tbproductos.RowHeadersVisible = false;
             this.tbproductos.RowHeadersWidth = 30;
             this.tbproductos.RowTemplate.Height = 40;
-            this.tbproductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tbproductos.Size = new System.Drawing.Size(1002, 411);
             this.tbproductos.TabIndex = 34;
-            this.tbproductos.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.tbproductos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tbproductos.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.tbproductos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -218,9 +208,10 @@
             this.Controls.Add(this.lbproductos);
             this.Controls.Add(this.txtbuscar);
             this.Controls.Add(this.tbproductos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "subbuscarProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "subbuscarProductos";
+            this.Text = "Buscar productos";
             ((System.ComponentModel.ISupportInitialize)(this.tbproductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subfrmPedidos));
             this.lbcontador = new System.Windows.Forms.Label();
             this.guna2Separator5 = new Guna.UI2.WinForms.Guna2Separator();
             this.lbpedidos = new System.Windows.Forms.Label();
@@ -90,12 +91,7 @@
             this.tbpedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbpedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tbpedidos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.tbpedidos.BackgroundColor = System.Drawing.Color.White;
-            this.tbpedidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbpedidos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.tbpedidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -105,6 +101,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.tbpedidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tbpedidos.ColumnHeadersHeight = 50;
+            this.tbpedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -113,7 +110,6 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tbpedidos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.tbpedidos.EnableHeadersVisualStyles = false;
             this.tbpedidos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tbpedidos.Location = new System.Drawing.Point(26, 111);
             this.tbpedidos.Name = "tbpedidos";
@@ -129,10 +125,8 @@
             this.tbpedidos.RowHeadersVisible = false;
             this.tbpedidos.RowHeadersWidth = 30;
             this.tbpedidos.RowTemplate.Height = 40;
-            this.tbpedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tbpedidos.Size = new System.Drawing.Size(1002, 411);
             this.tbpedidos.TabIndex = 40;
-            this.tbpedidos.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.tbpedidos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tbpedidos.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.tbpedidos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -182,15 +176,12 @@
             this.txtbuscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtbuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtbuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtbuscar.DisabledState.Parent = this.txtbuscar;
             this.txtbuscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtbuscar.FillColor = System.Drawing.SystemColors.Control;
             this.txtbuscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtbuscar.FocusedState.Parent = this.txtbuscar;
             this.txtbuscar.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtbuscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtbuscar.HoverState.Parent = this.txtbuscar;
             this.txtbuscar.IconLeft = global::RegisterStore.Properties.Resources.buscar_32;
             this.txtbuscar.IconLeftOffset = new System.Drawing.Point(20, 0);
             this.txtbuscar.IconLeftSize = new System.Drawing.Size(25, 25);
@@ -201,7 +192,6 @@
             this.txtbuscar.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtbuscar.PlaceholderText = "BUSCAR PEDIDOS";
             this.txtbuscar.SelectedText = "";
-            this.txtbuscar.ShadowDecoration.Parent = this.txtbuscar;
             this.txtbuscar.Size = new System.Drawing.Size(410, 50);
             this.txtbuscar.TabIndex = 41;
             this.txtbuscar.TextOffset = new System.Drawing.Point(10, 0);
@@ -218,9 +208,10 @@
             this.Controls.Add(this.lbpedidos);
             this.Controls.Add(this.txtbuscar);
             this.Controls.Add(this.tbpedidos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "subfrmPedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "subfrmPedidos";
+            this.Text = "Buscar pedidos";
             ((System.ComponentModel.ISupportInitialize)(this.tbpedidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,38 +1,24 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
 {
     public partial class frmVentas : Form
     {
-
         public string tienda;
-
         public frmVentas(string tienda)
         {
             InitializeComponent();
             this.tienda = tienda;
-
             resetear();
         }
-
         public void resetear()
         {
-            txttotal.Text = "$ 0";
-            txtsubtotal.Text = "$ 0";
-            txtdescuentoventa.Text = "0 %";
 
             cbestado.SelectedIndex = 0;
-            txtabono.Text = "$ 0";
 
             cbmedio.SelectedIndex = 0;
             txtreferencia.Text = "NO APLICA";
@@ -41,14 +27,15 @@ namespace RegisterStore.Scripts
             bteditar.Enabled = false;
             bteliminar.Enabled = false;
 
-            txtdescuentoventa.Enabled = false;
+            txtdescuento.ReadOnly = true;
             cbestado.Enabled = false;
-            txtabono.Enabled = false;
+            txtabono.ReadOnly = true;
 
             cbmedio.Enabled = false;
-            txtreferencia.Enabled = false;
+            txtreferencia.ReadOnly = true;
 
-
+            txtabono.Text = "$ 0";
+            txtdescuento.Text = "0%";
 
             buscar_producto("");
             limpiar_tabla();
@@ -59,9 +46,9 @@ namespace RegisterStore.Scripts
 
         public string eliminar_formato(string texto)
         {
-            string noFormat="";
+            string noFormat = "";
 
-            string[] charsToRemove = new string[] { "@", ".", ";", "'" ,"%","$"," "};
+            string[] charsToRemove = new string[] { "@", ".", ";", "'", "%", "$", " " };
             foreach (var c in charsToRemove)
             {
                 texto = texto.Replace(c, string.Empty);
@@ -123,9 +110,9 @@ namespace RegisterStore.Scripts
                 }
 
                 float descuentoTotal = 0;
-                if (!txtdescuentoventa.Text.Equals(""))
+                if (!txtdescuento.Text.Equals(""))
                 {
-                    descuentoTotal = float.Parse(eliminar_formato(txtdescuentoventa.Text)) / 100;
+                    descuentoTotal = float.Parse(eliminar_formato(txtdescuento.Text)) / 100;
                 }
 
                 subtotal = subtotal - (subtotal * descuentoTotal);
@@ -145,7 +132,7 @@ namespace RegisterStore.Scripts
 
                 ventas.Idproducto = Int32.Parse(tbventa.Rows[i].Cells[0].Value.ToString());
 
-                ventas.Unidades= Int32.Parse(tbventa.Rows[i].Cells[7].Value.ToString());
+                ventas.Unidades = Int32.Parse(tbventa.Rows[i].Cells[7].Value.ToString());
 
                 ventas.Total = float.Parse(tbventa.Rows[i].Cells[9].Value.ToString());
 
@@ -168,7 +155,7 @@ namespace RegisterStore.Scripts
 
         public void enviar(int index)
         {
-            
+
 
             string id = tbproductos.Rows[index].Cells[0].Value.ToString();
             string codigo = tbproductos.Rows[index].Cells[1].Value.ToString();
@@ -227,7 +214,7 @@ namespace RegisterStore.Scripts
                         tbventa.Columns[0].Visible = false;
 
                         btconfirmar.Enabled = true;
-                        txtdescuentoventa.Enabled = true;
+                        txtdescuento.ReadOnly = false;
 
                     }
                     else
@@ -271,47 +258,60 @@ namespace RegisterStore.Scripts
 
         }
 
-
         private void cbestado_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbestado.SelectedItem.ToString().Equals("ABONADO"))
             {
-                txtabono.Enabled = true;
+                txtabono.ReadOnly = false;
                 txtabono.Focus();
             }
         }
 
         private void txtabono_Leave(object sender, EventArgs e)
         {
-
-            int abono = int.Parse(eliminar_formato(txtabono.Text));            
-
-            float subtotal = float.Parse(eliminar_formato(txtsubtotal.Text));
-            if (abono>subtotal)
+            try
             {
-                MessageBox.Show("El valor del abono no puede ser superior al subtotal de la compra", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtabono.Text = "$ 0";
+                int abono = int.Parse(eliminar_formato(txtabono.Text));
+
+                float subtotal = float.Parse(eliminar_formato(txtsubtotal.Text));
+                if (abono > subtotal)
+                {
+                    MessageBox.Show("El valor del abono no puede ser superior al subtotal de la compra", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtabono.Text = "$ 0";
+                }
+                else
+                {
+                    txtabono.Text = "$" + abono.ToString();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                txtabono.Text = "$" + abono.ToString();
+                System.Console.WriteLine(ex.ToString());
             }
         }
 
-        private void txtdescuentoventa_Leave(object sender, EventArgs e)
+        private void txtdescuento_Leave(object sender, EventArgs e)
         {
-            int descuento = int.Parse(eliminar_formato(txtdescuentoventa.Text));
-            if (descuento>100)
-            {
-                MessageBox.Show("El descuento no puede ser mayor a un 100%", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtdescuentoventa.Text = "0 %";
-                sumar();
 
-            }
-            else
+            try
             {
-                sumar();
-                txtdescuentoventa.Text = descuento.ToString() + " %";
+                int descuento = int.Parse(eliminar_formato(txtdescuento.Text));
+                if (descuento > 100)
+                {
+                    MessageBox.Show("El descuento no puede ser mayor a un 100%", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtdescuento.Text = "0 %";
+                    sumar();
+
+                }
+                else
+                {
+                    sumar();
+                    txtdescuento.Text = descuento.ToString() + " %";
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.Write(ex.ToString());
             }
         }
 
@@ -319,14 +319,9 @@ namespace RegisterStore.Scripts
         {
             if (!cbmedio.SelectedItem.ToString().Equals("EFECTIVO"))
             {
-                txtreferencia.Enabled = true;
+                txtreferencia.ReadOnly = false;
                 txtreferencia.Focus();
             }
-        }
-
-        private void btcancelar_Click(object sender, EventArgs e)
-        {
-            resetear();
         }
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
@@ -349,7 +344,7 @@ namespace RegisterStore.Scripts
             float descuento = float.Parse(tbventa.Rows[e.RowIndex].Cells[8].Value.ToString()) / 100;
 
             int stock = ventas.obtener_stock();
-            if (unidades<=stock && unidades>0)
+            if (unidades <= stock && unidades > 0)
             {
                 if (descuento > 1)
                 {
@@ -370,11 +365,6 @@ namespace RegisterStore.Scripts
                 MessageBox.Show("No hay suficientes exsistencias del producto por favor verifique la cantidad", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbventa.Rows[e.RowIndex].Cells[7].Value = "1";
             }
-            
-        }
-
-        private void txtdescuentoventa_TextChanged(object sender, EventArgs e)
-        {
         }
 
         private void tbventa_KeyDown(object sender, KeyEventArgs e)
@@ -394,9 +384,10 @@ namespace RegisterStore.Scripts
 
         private void btconfirmar_Click(object sender, EventArgs e)
         {
+
             float total = float.Parse(eliminar_formato(txttotal.Text));
             float subtotal = float.Parse(eliminar_formato(txtsubtotal.Text));
-            int descuento = int.Parse(eliminar_formato(txtdescuentoventa.Text));
+            int descuento = int.Parse(eliminar_formato(txtdescuento.Text));
 
             string estado = cbestado.SelectedItem.ToString();
             int abono = int.Parse(eliminar_formato(txtabono.Text));
@@ -419,7 +410,7 @@ namespace RegisterStore.Scripts
                 referencia = "NO APLICA";
             }
 
-            if (total>0 && subtotal>=0)
+            if (total > 0 && subtotal >= 0)
             {
                 Ventas ventas = new Ventas();
 
@@ -451,7 +442,7 @@ namespace RegisterStore.Scripts
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió el siguiente error al registrar la venta: "+ex.ToString(), "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ocurrió el siguiente error al registrar la venta: " + ex.ToString(), "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -464,6 +455,30 @@ namespace RegisterStore.Scripts
                 {
                     enviar(0);
                 }
+            }
+        }
+
+        private void txtdescuento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || (e.KeyChar == Convert.ToChar(Keys.Delete)) || (e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtabono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || (e.KeyChar == Convert.ToChar(Keys.Delete)) || (e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

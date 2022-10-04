@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegisterStore.Logic
 {
@@ -112,7 +108,7 @@ namespace RegisterStore.Logic
 
                     //Llenando la tabla
 
-                    tabla.Rows.Add(rd.GetSqlInt32(0), rd.GetSqlString(1), rd.GetSqlString(2), rd.GetSqlString(3), rd.GetSqlString(4), rd.GetSqlString(5), rd.GetSqlInt32(6), rd.GetSqlInt32(7),rd.GetSqlString(8));
+                    tabla.Rows.Add(rd.GetSqlInt32(0), rd.GetSqlString(1), rd.GetSqlString(2), rd.GetSqlString(3), rd.GetSqlString(4), rd.GetSqlString(5), rd.GetSqlInt32(6), rd.GetSqlInt32(7), rd.GetSqlString(8));
                 }
             }
             catch (Exception ex)
@@ -132,10 +128,10 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO ventas(fecha,hora,total,subtotal,descuento,abono,medio,referencia,estado,tienda) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", Fecha,Hora,Total,Subtotal,Descuento,Abono,Medio,Referencia,Estado,Tienda), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO ventas(fecha,hora,total,subtotal,descuento,abono,medio,referencia,estado,tienda) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", Fecha, Hora, Total, Subtotal, Descuento, Abono, Medio, Referencia, Estado, Tienda), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
-                   confirmacion = true;
+                    confirmacion = true;
                 }
 
             }
@@ -152,7 +148,7 @@ namespace RegisterStore.Logic
 
         public void obtener_idventa()
         {
-            
+
             try
             {
                 SqlCommand cmd = new SqlCommand(String.Format("SELECT MAX(idventa) FROM ventas"), conexion.conectar());
@@ -174,7 +170,7 @@ namespace RegisterStore.Logic
             {
                 try
                 {
-                    SqlCommand sql = new SqlCommand(string.Format("INSERT INTO subventas(idventa,idproducto,unidades,total,subtotal,descuento) values('{0}','{1}','{2}','{3}','{4}','{5}')", Idventa, Idproducto,Unidades,Total,Subtotal,Descuento), conexion.conectar());
+                    SqlCommand sql = new SqlCommand(string.Format("INSERT INTO subventas(idventa,idproducto,unidades,total,subtotal,descuento) values('{0}','{1}','{2}','{3}','{4}','{5}')", Idventa, Idproducto, Unidades, Total, Subtotal, Descuento), conexion.conectar());
                     if (sql.ExecuteNonQuery() != 0)
                     {
                         if (!this.Estado.Equals("ENCARGO"))
@@ -195,64 +191,64 @@ namespace RegisterStore.Logic
                 {
                     System.Console.WriteLine(ex.ToString());
                 }
-                
+
 
             }
             return confirmacion;
 
         }
 
-            public int obtener_stock()
+        public int obtener_stock()
+        {
+            int actual = 0;
+            int nuevo = 0;
+
+            SqlCommand sql = new SqlCommand(String.Format("SELECT stock FROM existencias WHERE idproducto='" + Idproducto + "'"), conexion.conectar());
+            SqlDataReader rd = sql.ExecuteReader();
+            while (rd.Read())
             {
-                int actual = 0;
-                int nuevo = 0;
-
-                SqlCommand sql = new SqlCommand(String.Format("SELECT stock FROM existencias WHERE idproducto='" + Idproducto + "'"), conexion.conectar());
-                SqlDataReader rd = sql.ExecuteReader();
-                while (rd.Read())
-                {
-                    actual = rd.GetInt32(0);
-                }
-
-                nuevo = actual - Unidades;
-                return nuevo;
+                actual = rd.GetInt32(0);
             }
 
-            public bool restar_existencias()
-            {
-                bool respuesta = false;
-
-                int stock = obtener_stock();
-
-                try
-                {
-                    SqlCommand sql = new SqlCommand(string.Format("UPDATE existencias SET stock='{0}' where idproducto='{1}'", stock, Idproducto), conexion.conectar());
-                    if (sql.ExecuteNonQuery() != 0)
-                    {
-                        respuesta = true;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    System.Console.WriteLine(ex.ToString());
-                }
-
-
-                return respuesta;
-            }
-
-
-
-
-
-
-
-
-
-
-
-            #endregion
-
+            nuevo = actual - Unidades;
+            return nuevo;
         }
+
+        public bool restar_existencias()
+        {
+            bool respuesta = false;
+
+            int stock = obtener_stock();
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(string.Format("UPDATE existencias SET stock='{0}' where idproducto='{1}'", stock, Idproducto), conexion.conectar());
+                if (sql.ExecuteNonQuery() != 0)
+                {
+                    respuesta = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+
+
+            return respuesta;
+        }
+
+
+
+
+
+
+
+
+
+
+
+        #endregion
+
+    }
 }

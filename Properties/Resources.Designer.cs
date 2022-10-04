@@ -173,6 +173,36 @@ namespace RegisterStore.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icono_agregar_blanco {
+            get {
+                object obj = ResourceManager.GetObject("icono_agregar_blanco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_buscar_blanco {
+            get {
+                object obj = ResourceManager.GetObject("icono_buscar_blanco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icono_buscar_producto_blanco {
+            get {
+                object obj = ResourceManager.GetObject("icono_buscar_producto_blanco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_cancelar_blanco_32 {
             get {
                 object obj = ResourceManager.GetObject("icono_cancelar_blanco_32", resourceCulture);
@@ -276,6 +306,16 @@ namespace RegisterStore.Properties {
         internal static System.Drawing.Bitmap icons8_eye_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_eye_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_online_store_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_online_store_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,28 +1,19 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
 {
     public partial class frmTiendas : Form
     {
-        public string antiguo;
 
+        public string antiguo;
 
         public frmTiendas()
         {
             InitializeComponent();
             resetear();
         }
-
-
         public void resetear()
         {
 
@@ -32,9 +23,9 @@ namespace RegisterStore.Scripts
 
             buscar_tienda("");
 
-            txtnombre.Enabled = false;
-            txtdireccion.Enabled = false;
-            txttelefono.Enabled = false;
+            txtnombre.ReadOnly = true;
+            txtdireccion.ReadOnly = true;
+            txttelefono.ReadOnly = true;
 
             txtnombre.PlaceholderText = "NOMBRE TIENDA";
             txtdireccion.PlaceholderText = "ej. Cll # s # 0-0";
@@ -47,6 +38,8 @@ namespace RegisterStore.Scripts
             bteditar.Text = "EDITAR";
             btagregar.Text = "AGREGAR";
             bteliminar.Text = "ELIMINAR";
+
+            tbtiendas.Enabled = true;
 
             this.ActiveControl = txtbuscar;
 
@@ -110,9 +103,9 @@ namespace RegisterStore.Scripts
                 txttelefono.Text = "";
 
 
-                txtnombre.Enabled = true;
-                txtdireccion.Enabled = true;
-                txttelefono.Enabled = true;
+                txtnombre.ReadOnly = false;
+                txtdireccion.ReadOnly = false;
+                txttelefono.ReadOnly = false;
 
                 txtnombre.PlaceholderText = "NOMBRE TIENDA";
                 txtdireccion.PlaceholderText = "ej. Cll # s # 0-0";
@@ -123,6 +116,8 @@ namespace RegisterStore.Scripts
 
                 btagregar.Text = "GUARDAR";
 
+                bteditar.Enabled = false;
+                bteliminar.Enabled = false;
             }
             else
             {
@@ -158,9 +153,9 @@ namespace RegisterStore.Scripts
         {
             if (bteditar.Text.Equals("EDITAR"))
             {
-                txtnombre.Enabled = true;
-                txtdireccion.Enabled = true;
-                txttelefono.Enabled = true;
+                txtnombre.ReadOnly = false;
+                txtdireccion.ReadOnly = false;
+                txttelefono.ReadOnly = false;
 
                 btagregar.Enabled = false;
                 bteliminar.Enabled = false;
@@ -210,12 +205,13 @@ namespace RegisterStore.Scripts
                 bteliminar.Text = "CONFIRMAR";
 
             }
-            else if (bteliminar.Text.Equals("CONFIRMAR")) 
+            else if (bteliminar.Text.Equals("CONFIRMAR"))
             {
                 if (MessageBox.Show("¿Desea eliminar la tienda?", "RegisterStore", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     string nombre = txtnombre.Text;
-                    int id = Int32.Parse(lbid.Text);
+                    int index = tbtiendas.CurrentRow.Index;
+                    int id = Int32.Parse(tbtiendas.Rows[index].Cells[0].Value.ToString());
 
                     Tiendas tiendas = new Tiendas();
 
@@ -239,6 +235,18 @@ namespace RegisterStore.Scripts
         private void btcancelar_Click(object sender, EventArgs e)
         {
             resetear();
+        }
+
+        private void txttelefono_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || (e.KeyChar == Convert.ToChar(Keys.Delete)) || (e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

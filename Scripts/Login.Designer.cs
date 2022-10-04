@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pninfo = new Guna.UI2.WinForms.Guna2Panel();
             this.lberror = new System.Windows.Forms.Label();
@@ -40,6 +41,8 @@
             this.lblogin = new System.Windows.Forms.Label();
             this.btcerrar = new Guna.UI2.WinForms.Guna2CircleButton();
             this.pnimg = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pninfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +59,6 @@
             this.pninfo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pninfo.Location = new System.Drawing.Point(0, 0);
             this.pninfo.Name = "pninfo";
-            this.pninfo.ShadowDecoration.Parent = this.pninfo;
             this.pninfo.Size = new System.Drawing.Size(251, 400);
             this.pninfo.TabIndex = 2;
             // 
@@ -99,19 +101,15 @@
             this.btver.BackColor = System.Drawing.Color.Transparent;
             this.btver.BorderColor = System.Drawing.Color.Transparent;
             this.btver.BorderRadius = 10;
-            this.btver.CheckedState.Parent = this.btver;
             this.btver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btver.CustomImages.Parent = this.btver;
             this.btver.FillColor = System.Drawing.Color.Transparent;
             this.btver.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btver.ForeColor = System.Drawing.Color.White;
-            this.btver.HoverState.Parent = this.btver;
             this.btver.Image = global::RegisterStore.Properties.Resources.icono_ver_rosado;
             this.btver.Location = new System.Drawing.Point(202, 200);
             this.btver.Margin = new System.Windows.Forms.Padding(0);
             this.btver.Name = "btver";
             this.btver.PressedColor = System.Drawing.Color.Transparent;
-            this.btver.ShadowDecoration.Parent = this.btver;
             this.btver.Size = new System.Drawing.Size(25, 25);
             this.btver.TabIndex = 8;
             this.btver.UseTransparentBackground = true;
@@ -123,16 +121,12 @@
             this.btingresar.AutoRoundedCorners = true;
             this.btingresar.BorderColor = System.Drawing.Color.Transparent;
             this.btingresar.BorderRadius = 19;
-            this.btingresar.CheckedState.Parent = this.btingresar;
             this.btingresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btingresar.CustomImages.Parent = this.btingresar;
             this.btingresar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btingresar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btingresar.ForeColor = System.Drawing.Color.White;
-            this.btingresar.HoverState.Parent = this.btingresar;
             this.btingresar.Location = new System.Drawing.Point(47, 270);
             this.btingresar.Name = "btingresar";
-            this.btingresar.ShadowDecoration.Parent = this.btingresar;
             this.btingresar.Size = new System.Drawing.Size(156, 40);
             this.btingresar.TabIndex = 6;
             this.btingresar.Text = "INGRESAR";
@@ -149,21 +143,18 @@
             this.txtclave.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtclave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtclave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtclave.DisabledState.Parent = this.txtclave;
             this.txtclave.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtclave.FillColor = System.Drawing.Color.Transparent;
             this.txtclave.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.txtclave.FocusedState.Parent = this.txtclave;
+            this.txtclave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtclave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.txtclave.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.txtclave.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.txtclave.HoverState.Parent = this.txtclave;
             this.txtclave.Location = new System.Drawing.Point(25, 197);
             this.txtclave.Name = "txtclave";
-            this.txtclave.PasswordChar = '\0';
+            this.txtclave.PasswordChar = '●';
             this.txtclave.PlaceholderText = "";
             this.txtclave.SelectedText = "";
-            this.txtclave.ShadowDecoration.Parent = this.txtclave;
             this.txtclave.Size = new System.Drawing.Size(200, 30);
             this.txtclave.TabIndex = 5;
             this.txtclave.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -181,21 +172,18 @@
             this.txtusuario.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtusuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtusuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusuario.DisabledState.Parent = this.txtusuario;
             this.txtusuario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtusuario.FillColor = System.Drawing.Color.Transparent;
             this.txtusuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.txtusuario.FocusedState.Parent = this.txtusuario;
+            this.txtusuario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtusuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.txtusuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.txtusuario.HoverState.FillColor = System.Drawing.Color.Transparent;
-            this.txtusuario.HoverState.Parent = this.txtusuario;
             this.txtusuario.Location = new System.Drawing.Point(25, 120);
             this.txtusuario.Name = "txtusuario";
             this.txtusuario.PasswordChar = '\0';
             this.txtusuario.PlaceholderText = "";
             this.txtusuario.SelectedText = "";
-            this.txtusuario.ShadowDecoration.Parent = this.txtusuario;
             this.txtusuario.Size = new System.Drawing.Size(200, 30);
             this.txtusuario.TabIndex = 3;
             this.txtusuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -214,20 +202,17 @@
             // 
             // btcerrar
             // 
+            this.btcerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(21)))), ((int)(((byte)(24)))));
             this.btcerrar.BorderColor = System.Drawing.Color.Transparent;
-            this.btcerrar.CheckedState.Parent = this.btcerrar;
-            this.btcerrar.CustomImages.Parent = this.btcerrar;
             this.btcerrar.FillColor = System.Drawing.Color.Transparent;
             this.btcerrar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btcerrar.ForeColor = System.Drawing.Color.White;
             this.btcerrar.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btcerrar.HoverState.Parent = this.btcerrar;
-            this.btcerrar.Location = new System.Drawing.Point(575, 3);
+            this.btcerrar.Location = new System.Drawing.Point(567, 2);
             this.btcerrar.Name = "btcerrar";
             this.btcerrar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btcerrar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btcerrar.ShadowDecoration.Parent = this.btcerrar;
-            this.btcerrar.Size = new System.Drawing.Size(20, 20);
+            this.btcerrar.Size = new System.Drawing.Size(31, 32);
             this.btcerrar.TabIndex = 0;
             this.btcerrar.Text = "X";
             this.btcerrar.Click += new System.EventHandler(this.btcerrar_Click);
@@ -238,9 +223,19 @@
             this.pnimg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pnimg.Location = new System.Drawing.Point(249, 0);
             this.pnimg.Name = "pnimg";
-            this.pnimg.ShadowDecoration.Parent = this.pnimg;
             this.pnimg.Size = new System.Drawing.Size(319, 400);
             this.pnimg.TabIndex = 3;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 10;
+            this.guna2Elipse1.TargetControl = this;
             // 
             // Login
             // 
@@ -252,6 +247,7 @@
             this.Controls.Add(this.pnimg);
             this.Controls.Add(this.pninfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
@@ -274,5 +270,7 @@
         private System.Windows.Forms.Label lblogin;
         private Guna.UI2.WinForms.Guna2Panel pnimg;
         private Guna.UI2.WinForms.Guna2CircleButton btcerrar;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

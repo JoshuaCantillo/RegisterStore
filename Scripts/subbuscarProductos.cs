@@ -1,12 +1,6 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
@@ -17,7 +11,7 @@ namespace RegisterStore.Scripts
         public string tienda;
         public Int32 idproveedor;
 
-        public subbuscarProductos(string modulo,string tienda,Int32 idproveedor)
+        public subbuscarProductos(string modulo, string tienda, Int32 idproveedor)
         {
             InitializeComponent();
             this.modulo = modulo;
@@ -90,7 +84,7 @@ namespace RegisterStore.Scripts
             int index = tbproductos.CurrentRow.Index;
             if (modulo.Equals("proveedores"))
             {
-                
+
                 string id = tbproductos.Rows[index].Cells[0].Value.ToString();
                 string codigo = tbproductos.Rows[index].Cells[1].Value.ToString();
                 string producto = tbproductos.Rows[index].Cells[2].Value.ToString();
@@ -174,7 +168,7 @@ namespace RegisterStore.Scripts
                 string descuento = "0";
                 string total = "0";
                 string subtotal = "0";
-                    
+
 
                 frmPedidos pedidos = Owner as frmPedidos;
 
@@ -185,7 +179,7 @@ namespace RegisterStore.Scripts
                     for (int i = 0; i < pedidos.tbproductos.Rows.Count; i++)
                     {
                         string id;
-                        id=pedidos.tbproductos.Rows[i].Cells[0].Value.ToString();
+                        id = pedidos.tbproductos.Rows[i].Cells[0].Value.ToString();
                         if (id == idproducto)
                         {
                             rt = true;
@@ -213,7 +207,7 @@ namespace RegisterStore.Scripts
                         tabla.Columns.Add("Total", typeof(string));
                         tabla.Columns.Add("Subtotal", typeof(string));
 
-                        tabla.Rows.Add(idproducto, codigo, nombre, laboratorio, presentacion, cantidad, compra,unidades,descuento,total,subtotal);
+                        tabla.Rows.Add(idproducto, codigo, nombre, laboratorio, presentacion, cantidad, compra, unidades, descuento, total, subtotal);
 
                         pedidos.tbproductos.DataSource = tabla;
 
@@ -247,12 +241,12 @@ namespace RegisterStore.Scripts
                     if (pedidos.accion.Equals("nuevo"))
                     {
                         pedidos.btconfirmar.Enabled = true;
-                        pedidos.txtdescuento.Enabled = true;
+                        pedidos.txtdescuento.ReadOnly = false;
                         pedidos.btbuscar.Enabled = false;
                         pedidos.cbestado.Enabled = true;
-                        pedidos.txtbuscar.Enabled = false;
-                        pedidos.tbproveedores.Enabled=false;
-                    }   
+                        pedidos.txtbuscar.ReadOnly = true;
+                        pedidos.tbproveedores.Enabled = false;
+                    }
 
                 }
                 else

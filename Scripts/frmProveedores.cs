@@ -1,38 +1,29 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
 {
     public partial class frmProveedores : Form
     {
+        public string tienda;
         public frmProveedores(string tienda)
         {
             InitializeComponent();
-            resetear();
             this.tienda = tienda;
-            this.ActiveControl = txtbuscar;
-        }
 
-        public string tienda;
+            resetear();
+        }
 
         public void resetear()
         {
             txtbuscar.Text = "";
             txtbuscar.Focus();
 
-            txtnombre.Enabled = false;
-            txtlaboratorio.Enabled = false;
-            rbdistribuidor.Enabled = false;
-            rblaboratorio.Enabled = false;
-            txtcelular.Enabled = false;
+            txtnombre.ReadOnly = true;
+            txtlaboratorio.ReadOnly = true;
+            cbtipo.Enabled = false;
+            txtcelular.ReadOnly = true;
 
             btañadir.Enabled = false;
             btagregar.Enabled = true;
@@ -54,6 +45,7 @@ namespace RegisterStore.Scripts
 
             buscar_proveedor("");
         }
+
 
         public void buscar_proveedor(string arg)
         {
@@ -85,16 +77,7 @@ namespace RegisterStore.Scripts
                 txtlaboratorio.Text = tbproveedores.Rows[index].Cells[3].Value.ToString();
                 txtcelular.Text = tbproveedores.Rows[index].Cells[4].Value.ToString();
 
-                if (tipo.Equals("LABORATORIO"))
-                {
-                    rblaboratorio.Checked = true;
-                    rbdistribuidor.Checked = false;
-                }
-                else
-                {
-                    rblaboratorio.Checked = false;
-                    rbdistribuidor.Checked = true;
-                }
+                cbtipo.SelectedItem = tipo;
 
                 llenar_tabla(Int32.Parse(tbproveedores.Rows[index].Cells[0].Value.ToString()));
             }
@@ -142,35 +125,17 @@ namespace RegisterStore.Scripts
                 proveedores.Idproveedor = id;
                 int index = 0;
                 for (int i = 0; i < tbproductos.RowCount; i++)
-                {                 
-                    proveedores.Idproducto= Int32.Parse(tbproductos.Rows[index].Cells[0].Value.ToString());
+                {
+                    proveedores.Idproducto = Int32.Parse(tbproductos.Rows[index].Cells[0].Value.ToString());
                     proveedores.registrar_subproveedor();
                     index += 1;
                 }
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void btañadir_Click(object sender, EventArgs e)
         {
-            subbuscarProductos addProductos = new subbuscarProductos("proveedores",tienda,Int32.Parse(lbid.Text));
+            subbuscarProductos addProductos = new subbuscarProductos("proveedores", tienda, Int32.Parse(lbid.Text));
             AddOwnedForm(addProductos);
             addProductos.ShowDialog();
         }
@@ -178,11 +143,6 @@ namespace RegisterStore.Scripts
         private void tbproveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             llenar_campos(e.RowIndex);
-        }
-
-        private void tbproductos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
@@ -196,11 +156,10 @@ namespace RegisterStore.Scripts
             {
                 bteditar.Enabled = false;
                 bteliminar.Enabled = false;
-                txtnombre.Enabled = true;
-                txtcelular.Enabled = true;
-                txtlaboratorio.Enabled = true;
-                rblaboratorio.Enabled = true;
-                rbdistribuidor.Enabled = true;
+                txtnombre.ReadOnly = false;
+                txtcelular.ReadOnly = false;
+                txtlaboratorio.ReadOnly = false;
+                cbtipo.Enabled = true;
 
                 btañadir.Enabled = true;
                 tbproductos.Enabled = true;
@@ -212,16 +171,13 @@ namespace RegisterStore.Scripts
 
                 limpiar_tabla();
 
-                rblaboratorio.Checked = true;
-                rbdistribuidor.Checked = false;
-
                 txtnombre.Focus();
 
                 lbid.Text = "-1";
             }
             else
             {
-                if (tbproductos.Rows.Count!=0)
+                if (tbproductos.Rows.Count != 0)
                 {
                     if (!txtnombre.Text.Equals("") || !txtlaboratorio.Text.Equals("") || !txtcelular.Text.Equals(""))
                     {
@@ -229,18 +185,11 @@ namespace RegisterStore.Scripts
                         proveedores.Nombre = txtnombre.Text;
                         proveedores.Empresa = txtlaboratorio.Text;
                         proveedores.Celular = txtcelular.Text;
-                        if (rbdistribuidor.Checked == true)
-                        {
-                            proveedores.Tipo = "DISTRIBUIDOR";
-                        }
-                        else
-                        {
-                            proveedores.Tipo = "LABORATORIO";
-                        }
+                        proveedores.Tipo = cbtipo.SelectedItem.ToString();
 
                         if (proveedores.registrar_proveedor())
                         {
-                            proveedores.Idproveedor=proveedores.obtener_idproveedor();
+                            proveedores.Idproveedor = proveedores.obtener_idproveedor();
                             enviar_productos(proveedores.obtener_idproveedor());
                             MessageBox.Show("Se registró el proveedor exitosamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             resetear();
@@ -267,11 +216,10 @@ namespace RegisterStore.Scripts
             if (bteditar.Text.Equals("Editar") && tbproveedores.Rows.Count != 0)
             {
                 tbproductos.Enabled = true;
-                txtnombre.Enabled = true;
-                txtcelular.Enabled = true;
-                txtlaboratorio.Enabled = true;
-                rblaboratorio.Enabled = true;
-                rbdistribuidor.Enabled = true;
+                txtnombre.ReadOnly = false;
+                txtcelular.ReadOnly = false;
+                txtlaboratorio.ReadOnly = false;
+                cbtipo.Enabled = true;
                 btañadir.Enabled = true;
                 bteliminar.Enabled = false;
                 btagregar.Enabled = false;
@@ -279,7 +227,7 @@ namespace RegisterStore.Scripts
 
                 bteditar.Text = "Guardar";
             }
-            else if(bteditar.Text.Equals("Guardar"))
+            else if (bteditar.Text.Equals("Guardar"))
             {
                 if (tbproductos.Rows.Count != 0)
                 {
@@ -290,14 +238,7 @@ namespace RegisterStore.Scripts
                         proveedores.Nombre = txtnombre.Text;
                         proveedores.Empresa = txtlaboratorio.Text;
                         proveedores.Celular = txtcelular.Text;
-                        if (rbdistribuidor.Checked == true)
-                        {
-                            proveedores.Tipo = "DISTRIBUIDOR";
-                        }
-                        else
-                        {
-                            proveedores.Tipo = "LABORATORIO";
-                        }
+                        proveedores.Tipo = cbtipo.SelectedItem.ToString();
 
                         if (proveedores.modificar_proveedor())
                         {
@@ -322,13 +263,13 @@ namespace RegisterStore.Scripts
 
         private void bteliminar_Click(object sender, EventArgs e)
         {
-            if (bteliminar.Text.Equals("Eliminar") && tbproveedores.Rows.Count!=0)
+            if (bteliminar.Text.Equals("Eliminar") && tbproveedores.Rows.Count != 0)
             {
                 bteditar.Enabled = false;
                 btagregar.Enabled = false;
                 bteliminar.Text = "CONFIRMAR";
             }
-            else if(bteliminar.Text.Equals("CONFIRMAR"))
+            else if (bteliminar.Text.Equals("CONFIRMAR"))
             {
                 if (MessageBox.Show("¿Desea eliminar el proveedor?", "RegisterStore", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
@@ -348,17 +289,24 @@ namespace RegisterStore.Scripts
             }
         }
 
+        private void tbproductos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Delete)
+            {
+                if (MessageBox.Show("DESEA DESASOCIAR EL PRODUCTO SELECCIONADO DEL PROVEEDOR ACTUAL", "RegisterStore", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    tbproductos.Rows.RemoveAt(tbproductos.CurrentRow.Index);
+                }
+                if (tbproductos.Rows.Count == 0)
+                {
+                    resetear();
+                }
+            }
+        }
+
         private void btcancelar_Click(object sender, EventArgs e)
         {
             resetear();
-        }
-
-        private void tbproductos_CellContentDoubleClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (MessageBox.Show("DESEA DESASOCIAR EL PRODUCTO SELECCIONADO DEL PROVEEDOR ACTUAL", "RegisterStore", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                tbproductos.Rows.RemoveAt(tbproductos.CurrentRow.Index);
-            }
         }
     }
 }

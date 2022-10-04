@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegisterStore.Logic
 {
@@ -110,14 +104,14 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(String.Format("SELECT * FROM usuarios WHERE nombre like '%" + arg + "%' or tienda like '%"+arg+"%'"), conexion.conectar());
+                SqlCommand sql = new SqlCommand(String.Format("SELECT * FROM usuarios WHERE nombre like '%" + arg + "%' or tienda like '%" + arg + "%'"), conexion.conectar());
                 SqlDataReader rd = sql.ExecuteReader();
                 while (rd.Read())
                 {
 
                     //Llenando la tabla
 
-                    tabla.Rows.Add(rd.GetSqlInt32(0), rd.GetSqlString(1), rd.GetSqlString(2), rd.GetSqlString(3),rd.GetSqlString(4));
+                    tabla.Rows.Add(rd.GetSqlInt32(0), rd.GetSqlString(1), rd.GetSqlString(2), rd.GetSqlString(3), rd.GetSqlString(4));
                 }
             }
             catch (Exception ex)
@@ -133,10 +127,10 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO usuarios(nombre,clave,tipo,tienda) values('{0}','{1}','{2}','{3}')", Nombre, Clave, Tipo.ToUpper(),Tienda.ToUpper()), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO usuarios(nombre,clave,tipo,tienda) values('{0}','{1}','{2}','{3}')", Nombre, Clave, Tipo.ToUpper(), Tienda.ToUpper()), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
-                        confirmacion = true;
+                    confirmacion = true;
                 }
 
             }
@@ -155,7 +149,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("UPDATE usuarios SET nombre='{0}',clave='{1}',tipo='{2}' ,tienda='{3}' where idusuario='{4}'", Nombre, Clave, Tipo.ToUpper(), Tienda.ToUpper(),Idusuario), conexion.conectar()); ;
+                SqlCommand sql = new SqlCommand(string.Format("UPDATE usuarios SET nombre='{0}',clave='{1}',tipo='{2}' ,tienda='{3}' where idusuario='{4}'", Nombre, Clave, Tipo.ToUpper(), Tienda.ToUpper(), Idusuario), conexion.conectar()); ;
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     confirmacion = true;
@@ -180,7 +174,7 @@ namespace RegisterStore.Logic
                 SqlCommand sql = new SqlCommand(string.Format("DELETE FROM usuarios where idusuario='{0}'", Idusuario), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
-                        confirmacion = true;
+                    confirmacion = true;
                 }
 
             }

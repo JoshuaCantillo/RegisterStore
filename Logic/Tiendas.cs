@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegisterStore.Logic
 {
@@ -114,7 +110,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO existencias(idproducto,stock,tienda) values('{0}','{1}','{2}')", idproducto, 0, Nombre.ToUpper()), conexion.conectar()) ;
+                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO existencias(idproducto,stock,tienda) values('{0}','{1}','{2}')", idproducto, 0, Nombre.ToUpper()), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     confirmacion = true;
@@ -163,13 +159,13 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("UPDATE tiendas SET nombre='{0}',direccion='{1}',telefono='{2}' where idtienda='{3}'", Nombre.ToUpper(),Direccion.ToUpper(),Telefono,Idtienda), conexion.conectar());;
+                SqlCommand sql = new SqlCommand(string.Format("UPDATE tiendas SET nombre='{0}',direccion='{1}',telefono='{2}' where idtienda='{3}'", Nombre.ToUpper(), Direccion.ToUpper(), Telefono, Idtienda), conexion.conectar()); ;
                 if (sql.ExecuteNonQuery() != 0)
                 {
-                        if (modificar_existencias())
-                        {
-                            confirmacion = true;
-                        }
+                    if (modificar_existencias())
+                    {
+                        confirmacion = true;
+                    }
 
                 }
 

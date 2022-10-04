@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegisterStore.Logic
 {
@@ -103,7 +99,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(String.Format("SELECT P.idproducto,P.codigo,P.nombre,P.laboratorio,P.presentacion,P.cantidad,P.compra,E.stock FROM productos as P INNER JOIN existencias as E ON P.idproducto=E.idproducto INNER JOIN subproveedores as S ON P.idproducto=S.idproducto WHERE S.idproveedor='"+Iproveedor+"' and (P.nombre like '%"+arg+"%' or P.laboratorio like '%"+arg+"%' or P.codigo like '%"+arg+"%') and tienda='"+Tienda+"'"), conexion.conectar());
+                SqlCommand sql = new SqlCommand(String.Format("SELECT P.idproducto,P.codigo,P.nombre,P.laboratorio,P.presentacion,P.cantidad,P.compra,E.stock FROM productos as P INNER JOIN existencias as E ON P.idproducto=E.idproducto INNER JOIN subproveedores as S ON P.idproducto=S.idproducto WHERE S.idproveedor='" + Iproveedor + "' and (P.nombre like '%" + arg + "%' or P.laboratorio like '%" + arg + "%' or P.codigo like '%" + arg + "%') and tienda='" + Tienda + "'"), conexion.conectar());
                 SqlDataReader rd = sql.ExecuteReader();
                 while (rd.Read())
                 {
@@ -120,7 +116,7 @@ namespace RegisterStore.Logic
             return tabla;
         }
 
-        public DataTable buscar_pedido(string arg,string tienda)
+        public DataTable buscar_pedido(string arg, string tienda)
         {
             DataTable tabla = new DataTable();
 
@@ -141,19 +137,19 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(String.Format("SELECT P.*,S.nombre FROM pedidos as P INNER JOIN proveedores as S ON P.idproveedor=S.idproveedor WHERE (P.fecha like '%"+arg+ "%' or S.nombre like '%" + arg + "%' or P.estado like '%" + arg + "%') and  P.tienda like '%" + tienda + "%'"), conexion.conectar());
+                SqlCommand sql = new SqlCommand(String.Format("SELECT P.*,S.nombre FROM pedidos as P INNER JOIN proveedores as S ON P.idproveedor=S.idproveedor WHERE (P.fecha like '%" + arg + "%' or S.nombre like '%" + arg + "%' or P.estado like '%" + arg + "%') and  P.tienda like '%" + tienda + "%'"), conexion.conectar());
                 SqlDataReader rd = sql.ExecuteReader();
                 while (rd.Read())
                 {
 
                     //Llenando la tabla
 
-                    tabla.Rows.Add(rd.GetInt32(0), rd.GetInt32(1), rd.GetSqlDecimal(2), rd.GetSqlDecimal (3), rd.GetInt32(4), rd.GetSqlString(5), rd.GetString(6), rd.GetString(7), rd.GetString(8), rd.GetString(9),rd.GetString(10));
+                    tabla.Rows.Add(rd.GetInt32(0), rd.GetInt32(1), rd.GetSqlDecimal(2), rd.GetSqlDecimal(3), rd.GetInt32(4), rd.GetSqlString(5), rd.GetString(6), rd.GetString(7), rd.GetString(8), rd.GetString(9), rd.GetString(10));
                 }
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("Se presentó el siguiente error al buscar el pedido: "+ex.ToString());
+                System.Console.WriteLine("Se presentó el siguiente error al buscar el pedido: " + ex.ToString());
             }
             return tabla;
         }
@@ -179,14 +175,14 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(String.Format("SELECT P.codigo,P.nombre,P.laboratorio,P.presentacion,P.cantidad,P.compra,E.stock,S.unidades,S.descuento,S.total,S.subtotal FROM productos as P INNER JOIN existencias as E ON P.idproducto=E.idproducto INNER JOIN subpedidos as S ON P.idproducto=S.idproducto WHERE S.idpedido='"+Idpedido+"' and tienda='"+Tienda+"'"), conexion.conectar());
+                SqlCommand sql = new SqlCommand(String.Format("SELECT P.idproducto,P.codigo,P.nombre,P.laboratorio,P.presentacion,P.cantidad,S.compra,S.unidades,S.descuento,S.total,S.subtotal FROM productos as P INNER JOIN existencias as E ON P.idproducto=E.idproducto INNER JOIN subpedidos as S ON P.idproducto=S.idproducto WHERE S.idpedido='" + Idpedido + "' and tienda='" + Tienda + "'"), conexion.conectar());
                 SqlDataReader rd = sql.ExecuteReader();
                 while (rd.Read())
                 {
 
                     //Llenando la tabla
 
-                    tabla.Rows.Add(rd.GetString(0), rd.GetString(1), rd.GetString(2), rd.GetString(3), rd.GetString(4), rd.GetInt32(5), rd.GetInt32(6), rd.GetInt32(7), rd.GetInt32(8), rd.GetInt32(9), rd.GetInt32(10));
+                    tabla.Rows.Add(rd.GetInt32(0), rd.GetString(1), rd.GetString(2), rd.GetString(3), rd.GetString(4), rd.GetString(5), rd.GetInt32(6), rd.GetInt32(7), rd.GetInt32(8), rd.GetInt32(9), rd.GetInt32(10));
                 }
             }
             catch (Exception ex)
@@ -203,7 +199,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO pedidos(idproveedor,total,subtotal,descuento,fecha,hora,estado,pago,tienda) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')",Iproveedor,Total,Subtotal,Descuento,Fecha,Hora,Estado,Pago,Tienda ), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO pedidos(idproveedor,total,subtotal,descuento,fecha,hora,estado,pago,tienda) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", Iproveedor, Total, Subtotal, Descuento, Fecha, Hora, Estado, Pago, Tienda), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     confirmacion = true;
@@ -241,12 +237,11 @@ namespace RegisterStore.Logic
 
             int idpedido = obtener_idpedido();
 
-            if (idpedido!=-1)
+            if (idpedido != -1)
             {
-                System.Console.WriteLine(Idproducto.ToString());
                 try
                 {
-                    SqlCommand sql = new SqlCommand(string.Format("INSERT INTO subpedidos(idpedido,idproveedor,idproducto,unidades,compra,descuento,total,subtotal) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", idpedido, Iproveedor, Idproducto, Unidades, Compra,Descuento, Total, Subtotal), conexion.conectar());
+                    SqlCommand sql = new SqlCommand(string.Format("INSERT INTO subpedidos(idpedido,idproveedor,idproducto,unidades,compra,descuento,total,subtotal) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", idpedido, Iproveedor, Idproducto, Unidades, Compra, Descuento, Total, Subtotal), conexion.conectar());
                     if (sql.ExecuteNonQuery() != 0)
                     {
                         if (Estado.Equals("RECIBIDO") || Estado.Equals("PAGADO"))
@@ -275,17 +270,17 @@ namespace RegisterStore.Logic
 
         public int obtener_stock()
         {
-            int actual=0;
-            int nuevo=0;
+            int actual = 0;
+            int nuevo = 0;
 
-            SqlCommand sql = new SqlCommand(String.Format("SELECT stock FROM existencias WHERE idproducto='"+Idproducto+"'"), conexion.conectar());
+            SqlCommand sql = new SqlCommand(String.Format("SELECT stock FROM existencias WHERE idproducto='" + Idproducto + "'"), conexion.conectar());
             SqlDataReader rd = sql.ExecuteReader();
             while (rd.Read())
             {
                 actual = rd.GetInt32(0);
             }
 
-            nuevo =Unidades+ actual;
+            nuevo = Unidades + actual;
             return nuevo;
         }
 
@@ -297,7 +292,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("UPDATE existencias SET stock='{0}' where idproducto='{1}'",stock,Idproducto), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("UPDATE existencias SET stock='{0}' where idproducto='{1}'", stock, Idproducto), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     respuesta = true;
@@ -314,6 +309,104 @@ namespace RegisterStore.Logic
         }
 
 
+        public bool modificar_pedido()
+        {
+            bool confirmacion = false;
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(string.Format("UPDATE pedidos SET total='{0}',subtotal='{1}',descuento='{2}',fecha='{3}',hora='{4}',estado='{5}',pago='{6}' where idpedido='{7}'", Total, Subtotal, Descuento, Fecha, Hora, Estado, Pago, Idpedido), conexion.conectar());
+                if (sql.ExecuteNonQuery() != 0)
+                {
+                    confirmacion = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+
+
+            return confirmacion;
+        }
+
+        public bool modificar_subpedido()
+        {
+            bool confirmacion = false;
+            try
+            {
+                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO subpedidos(idpedido,idproveedor,idproducto,unidades,compra,descuento,total,subtotal) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", Idpedido, Iproveedor, Idproducto, Unidades, Compra, Descuento, Total, Subtotal), conexion.conectar());
+                if (sql.ExecuteNonQuery() != 0)
+                {
+                    if (Estado.Equals("RECIBIDO") || Estado.Equals("PAGADO"))
+                    {
+                        if (add_existencias())
+                        {
+                            confirmacion = true;
+                        }
+                    }
+                    else
+                    {
+                        confirmacion = true;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+
+
+            return confirmacion;
+        }
+
+
+        public bool eliminar_subpedido()
+        {
+            bool confirmacion = false;
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(string.Format("DELETE FROM subpedidos WHERE idpedido='{0}'", Idpedido), conexion.conectar());
+                if (sql.ExecuteNonQuery() != 0)
+                {
+                    confirmacion = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+
+
+            return confirmacion;
+        }
+
+
+        public bool eliminar_pedido()
+        {
+            bool confirmacion = false;
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(string.Format("DELETE FROM pedidos WHERE idpedido='{0}'", Idpedido), conexion.conectar());
+                if (sql.ExecuteNonQuery() != 0)
+                {
+                    confirmacion = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+
+
+            return confirmacion;
+        }
 
         #endregion
 

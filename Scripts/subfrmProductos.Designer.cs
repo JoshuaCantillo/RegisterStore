@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subfrmProductos));
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.lbproductos = new System.Windows.Forms.Label();
             this.lbcodigo = new System.Windows.Forms.Label();
@@ -54,6 +55,8 @@
             this.bteditar = new Guna.UI2.WinForms.Guna2Button();
             this.btguardar = new Guna.UI2.WinForms.Guna2Button();
             this.lbidproducto = new System.Windows.Forms.Label();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.SuspendLayout();
             // 
             // guna2AnimateWindow1
@@ -95,21 +98,17 @@
             this.txtcodigo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtcodigo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtcodigo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtcodigo.DisabledState.Parent = this.txtcodigo;
             this.txtcodigo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtcodigo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtcodigo.FocusedState.Parent = this.txtcodigo;
             this.txtcodigo.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtcodigo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtcodigo.HoverState.Parent = this.txtcodigo;
             this.txtcodigo.Location = new System.Drawing.Point(25, 135);
             this.txtcodigo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.PasswordChar = '\0';
             this.txtcodigo.PlaceholderText = "";
             this.txtcodigo.SelectedText = "";
-            this.txtcodigo.ShadowDecoration.Parent = this.txtcodigo;
             this.txtcodigo.Size = new System.Drawing.Size(216, 36);
             this.txtcodigo.TabIndex = 0;
             this.txtcodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcodigo_KeyPress);
@@ -122,21 +121,17 @@
             this.txtproducto.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtproducto.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtproducto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtproducto.DisabledState.Parent = this.txtproducto;
             this.txtproducto.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtproducto.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtproducto.FocusedState.Parent = this.txtproducto;
             this.txtproducto.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtproducto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtproducto.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtproducto.HoverState.Parent = this.txtproducto;
             this.txtproducto.Location = new System.Drawing.Point(25, 229);
             this.txtproducto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtproducto.Name = "txtproducto";
             this.txtproducto.PasswordChar = '\0';
             this.txtproducto.PlaceholderText = "";
             this.txtproducto.SelectedText = "";
-            this.txtproducto.ShadowDecoration.Parent = this.txtproducto;
             this.txtproducto.Size = new System.Drawing.Size(216, 36);
             this.txtproducto.TabIndex = 1;
             // 
@@ -161,21 +156,17 @@
             this.txtlaboratorio.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtlaboratorio.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtlaboratorio.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtlaboratorio.DisabledState.Parent = this.txtlaboratorio;
             this.txtlaboratorio.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtlaboratorio.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtlaboratorio.FocusedState.Parent = this.txtlaboratorio;
             this.txtlaboratorio.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtlaboratorio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtlaboratorio.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtlaboratorio.HoverState.Parent = this.txtlaboratorio;
             this.txtlaboratorio.Location = new System.Drawing.Point(25, 323);
             this.txtlaboratorio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtlaboratorio.Name = "txtlaboratorio";
             this.txtlaboratorio.PasswordChar = '\0';
             this.txtlaboratorio.PlaceholderText = "";
             this.txtlaboratorio.SelectedText = "";
-            this.txtlaboratorio.ShadowDecoration.Parent = this.txtlaboratorio;
             this.txtlaboratorio.Size = new System.Drawing.Size(216, 36);
             this.txtlaboratorio.TabIndex = 2;
             // 
@@ -209,21 +200,17 @@
             this.txtcantidad.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtcantidad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtcantidad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtcantidad.DisabledState.Parent = this.txtcantidad;
             this.txtcantidad.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtcantidad.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtcantidad.FocusedState.Parent = this.txtcantidad;
             this.txtcantidad.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtcantidad.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtcantidad.HoverState.Parent = this.txtcantidad;
             this.txtcantidad.Location = new System.Drawing.Point(293, 229);
             this.txtcantidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtcantidad.Name = "txtcantidad";
             this.txtcantidad.PasswordChar = '\0';
             this.txtcantidad.PlaceholderText = "";
             this.txtcantidad.SelectedText = "";
-            this.txtcantidad.ShadowDecoration.Parent = this.txtcantidad;
             this.txtcantidad.Size = new System.Drawing.Size(216, 36);
             this.txtcantidad.TabIndex = 4;
             // 
@@ -257,21 +244,17 @@
             this.txtpresentacion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtpresentacion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtpresentacion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtpresentacion.DisabledState.Parent = this.txtpresentacion;
             this.txtpresentacion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtpresentacion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtpresentacion.FocusedState.Parent = this.txtpresentacion;
             this.txtpresentacion.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpresentacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtpresentacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtpresentacion.HoverState.Parent = this.txtpresentacion;
             this.txtpresentacion.Location = new System.Drawing.Point(293, 135);
             this.txtpresentacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtpresentacion.Name = "txtpresentacion";
             this.txtpresentacion.PasswordChar = '\0';
             this.txtpresentacion.PlaceholderText = "";
             this.txtpresentacion.SelectedText = "";
-            this.txtpresentacion.ShadowDecoration.Parent = this.txtpresentacion;
             this.txtpresentacion.Size = new System.Drawing.Size(216, 36);
             this.txtpresentacion.TabIndex = 3;
             // 
@@ -296,21 +279,17 @@
             this.txtiva.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtiva.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtiva.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtiva.DisabledState.Parent = this.txtiva;
             this.txtiva.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtiva.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtiva.FocusedState.Parent = this.txtiva;
             this.txtiva.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtiva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtiva.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtiva.HoverState.Parent = this.txtiva;
             this.txtiva.Location = new System.Drawing.Point(563, 229);
             this.txtiva.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtiva.Name = "txtiva";
             this.txtiva.PasswordChar = '\0';
             this.txtiva.PlaceholderText = "";
             this.txtiva.SelectedText = "";
-            this.txtiva.ShadowDecoration.Parent = this.txtiva;
             this.txtiva.Size = new System.Drawing.Size(216, 36);
             this.txtiva.TabIndex = 7;
             this.txtiva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtiva_KeyPress);
@@ -337,21 +316,17 @@
             this.txtcompra.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtcompra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtcompra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtcompra.DisabledState.Parent = this.txtcompra;
             this.txtcompra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtcompra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtcompra.FocusedState.Parent = this.txtcompra;
             this.txtcompra.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtcompra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtcompra.HoverState.Parent = this.txtcompra;
             this.txtcompra.Location = new System.Drawing.Point(563, 135);
             this.txtcompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtcompra.Name = "txtcompra";
             this.txtcompra.PasswordChar = '\0';
             this.txtcompra.PlaceholderText = "";
             this.txtcompra.SelectedText = "";
-            this.txtcompra.ShadowDecoration.Parent = this.txtcompra;
             this.txtcompra.Size = new System.Drawing.Size(216, 36);
             this.txtcompra.TabIndex = 6;
             this.txtcompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcompra_KeyPress);
@@ -379,21 +354,17 @@
             this.txtventa.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtventa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtventa.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtventa.DisabledState.Parent = this.txtventa;
             this.txtventa.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtventa.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtventa.FocusedState.Parent = this.txtventa;
             this.txtventa.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtventa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtventa.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtventa.HoverState.Parent = this.txtventa;
             this.txtventa.Location = new System.Drawing.Point(293, 323);
             this.txtventa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtventa.Name = "txtventa";
             this.txtventa.PasswordChar = '\0';
             this.txtventa.PlaceholderText = "";
             this.txtventa.SelectedText = "";
-            this.txtventa.ShadowDecoration.Parent = this.txtventa;
             this.txtventa.Size = new System.Drawing.Size(216, 36);
             this.txtventa.TabIndex = 5;
             this.txtventa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtventa_KeyPress);
@@ -416,16 +387,13 @@
             // btcancelar
             // 
             this.btcancelar.BorderRadius = 5;
-            this.btcancelar.CheckedState.Parent = this.btcancelar;
-            this.btcancelar.CustomImages.Parent = this.btcancelar;
             this.btcancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btcancelar.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btcancelar.ForeColor = System.Drawing.Color.White;
-            this.btcancelar.HoverState.Parent = this.btcancelar;
-            this.btcancelar.Location = new System.Drawing.Point(734, 17);
+            this.btcancelar.ImageSize = new System.Drawing.Size(30, 30);
+            this.btcancelar.Location = new System.Drawing.Point(746, 17);
             this.btcancelar.Name = "btcancelar";
-            this.btcancelar.ShadowDecoration.Parent = this.btcancelar;
-            this.btcancelar.Size = new System.Drawing.Size(55, 48);
+            this.btcancelar.Size = new System.Drawing.Size(43, 39);
             this.btcancelar.TabIndex = 11;
             this.btcancelar.Text = "X";
             this.btcancelar.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -433,54 +401,42 @@
             // bteliminar
             // 
             this.bteliminar.BorderRadius = 5;
-            this.bteliminar.CheckedState.Parent = this.bteliminar;
-            this.bteliminar.CustomImages.Parent = this.bteliminar;
             this.bteliminar.FillColor = System.Drawing.Color.Red;
             this.bteliminar.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bteliminar.ForeColor = System.Drawing.Color.White;
-            this.bteliminar.HoverState.Parent = this.bteliminar;
             this.bteliminar.Image = global::RegisterStore.Properties.Resources.eliminar_blanco_48;
-            this.bteliminar.ImageSize = new System.Drawing.Size(40, 40);
-            this.bteliminar.Location = new System.Drawing.Point(673, 17);
+            this.bteliminar.ImageSize = new System.Drawing.Size(30, 30);
+            this.bteliminar.Location = new System.Drawing.Point(685, 17);
             this.bteliminar.Name = "bteliminar";
-            this.bteliminar.ShadowDecoration.Parent = this.bteliminar;
-            this.bteliminar.Size = new System.Drawing.Size(55, 48);
+            this.bteliminar.Size = new System.Drawing.Size(43, 39);
             this.bteliminar.TabIndex = 10;
             this.bteliminar.Click += new System.EventHandler(this.bteliminar_Click);
             // 
             // bteditar
             // 
             this.bteditar.BorderRadius = 5;
-            this.bteditar.CheckedState.Parent = this.bteditar;
-            this.bteditar.CustomImages.Parent = this.bteditar;
             this.bteditar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.bteditar.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bteditar.ForeColor = System.Drawing.Color.White;
-            this.bteditar.HoverState.Parent = this.bteditar;
             this.bteditar.Image = global::RegisterStore.Properties.Resources.editar_blanco_48;
-            this.bteditar.ImageSize = new System.Drawing.Size(40, 40);
-            this.bteditar.Location = new System.Drawing.Point(612, 17);
+            this.bteditar.ImageSize = new System.Drawing.Size(30, 30);
+            this.bteditar.Location = new System.Drawing.Point(624, 17);
             this.bteditar.Name = "bteditar";
-            this.bteditar.ShadowDecoration.Parent = this.bteditar;
-            this.bteditar.Size = new System.Drawing.Size(55, 48);
+            this.bteditar.Size = new System.Drawing.Size(43, 39);
             this.bteditar.TabIndex = 9;
             this.bteditar.Click += new System.EventHandler(this.bteditar_Click);
             // 
             // btguardar
             // 
             this.btguardar.BorderRadius = 5;
-            this.btguardar.CheckedState.Parent = this.btguardar;
-            this.btguardar.CustomImages.Parent = this.btguardar;
             this.btguardar.FillColor = System.Drawing.Color.Lime;
             this.btguardar.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btguardar.ForeColor = System.Drawing.Color.White;
-            this.btguardar.HoverState.Parent = this.btguardar;
             this.btguardar.Image = global::RegisterStore.Properties.Resources.guardar_blanco_48;
-            this.btguardar.ImageSize = new System.Drawing.Size(40, 40);
-            this.btguardar.Location = new System.Drawing.Point(551, 17);
+            this.btguardar.ImageSize = new System.Drawing.Size(30, 30);
+            this.btguardar.Location = new System.Drawing.Point(563, 17);
             this.btguardar.Name = "btguardar";
-            this.btguardar.ShadowDecoration.Parent = this.btguardar;
-            this.btguardar.Size = new System.Drawing.Size(55, 48);
+            this.btguardar.Size = new System.Drawing.Size(43, 39);
             this.btguardar.TabIndex = 8;
             this.btguardar.Click += new System.EventHandler(this.btguardar_Click);
             // 
@@ -497,6 +453,17 @@
             this.lbidproducto.Text = "LBID";
             this.lbidproducto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbidproducto.Visible = false;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 20;
+            this.guna2Elipse1.TargetControl = this;
             // 
             // subfrmProductos
             // 
@@ -528,9 +495,11 @@
             this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.lbcodigo);
             this.Controls.Add(this.lbproductos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "subfrmProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "subfrmProductos";
+            this.Text = "Inspeccionar productos";
             this.ResumeLayout(false);
 
         }
@@ -562,5 +531,7 @@
         public Guna.UI2.WinForms.Guna2Button btguardar;
         public Guna.UI2.WinForms.Guna2Button bteditar;
         public Guna.UI2.WinForms.Guna2Button bteliminar;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

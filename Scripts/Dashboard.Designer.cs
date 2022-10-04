@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbfecha = new System.Windows.Forms.Label();
+            this.lbhora = new System.Windows.Forms.Label();
             this.btusuarios = new Guna.UI2.WinForms.Guna2Button();
             this.bttiendas = new Guna.UI2.WinForms.Guna2Button();
             this.btventas = new Guna.UI2.WinForms.Guna2Button();
-            this.pnfecha = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbfecha = new System.Windows.Forms.Label();
-            this.lbhora = new System.Windows.Forms.Label();
             this.btpedidos = new Guna.UI2.WinForms.Guna2Button();
             this.btproveedores = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
@@ -51,17 +52,17 @@
             this.pnescritorio = new Guna.UI2.WinForms.Guna2Panel();
             this.Reloj = new System.Windows.Forms.Timer(this.components);
             this.guna2Panel1.SuspendLayout();
-            this.pnfecha.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.Controls.Add(this.tableLayoutPanel2);
             this.guna2Panel1.Controls.Add(this.btusuarios);
             this.guna2Panel1.Controls.Add(this.bttiendas);
             this.guna2Panel1.Controls.Add(this.btventas);
-            this.guna2Panel1.Controls.Add(this.pnfecha);
             this.guna2Panel1.Controls.Add(this.btpedidos);
             this.guna2Panel1.Controls.Add(this.btproveedores);
             this.guna2Panel1.Controls.Add(this.guna2Separator1);
@@ -77,27 +78,67 @@
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel1.MinimumSize = new System.Drawing.Size(150, 615);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(200, 627);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.lbfecha, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lbhora, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 527);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 100);
+            this.tableLayoutPanel2.TabIndex = 13;
+            // 
+            // lbfecha
+            // 
+            this.lbfecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbfecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
+            this.lbfecha.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbfecha.ForeColor = System.Drawing.Color.White;
+            this.lbfecha.Location = new System.Drawing.Point(2, 40);
+            this.lbfecha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbfecha.Name = "lbfecha";
+            this.lbfecha.Size = new System.Drawing.Size(196, 40);
+            this.lbfecha.TabIndex = 12;
+            this.lbfecha.Text = "dd/MM/AA";
+            this.lbfecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbhora
+            // 
+            this.lbhora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbhora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
+            this.lbhora.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbhora.ForeColor = System.Drawing.Color.White;
+            this.lbhora.Location = new System.Drawing.Point(2, 0);
+            this.lbhora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbhora.Name = "lbhora";
+            this.lbhora.Size = new System.Drawing.Size(196, 40);
+            this.lbhora.TabIndex = 11;
+            this.lbhora.Text = "00:\'00 aa";
+            this.lbhora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btusuarios
             // 
             this.btusuarios.BorderRadius = 5;
-            this.btusuarios.CheckedState.Parent = this.btusuarios;
-            this.btusuarios.CustomImages.Parent = this.btusuarios;
             this.btusuarios.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(72)))));
             this.btusuarios.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btusuarios.ForeColor = System.Drawing.Color.White;
             this.btusuarios.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
-            this.btusuarios.HoverState.Parent = this.btusuarios;
             this.btusuarios.Image = global::RegisterStore.Properties.Resources.icono_usuario_blanco;
             this.btusuarios.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btusuarios.ImageOffset = new System.Drawing.Point(3, 0);
             this.btusuarios.ImageSize = new System.Drawing.Size(25, 25);
             this.btusuarios.Location = new System.Drawing.Point(9, 248);
             this.btusuarios.Name = "btusuarios";
-            this.btusuarios.ShadowDecoration.Parent = this.btusuarios;
             this.btusuarios.Size = new System.Drawing.Size(180, 45);
             this.btusuarios.TabIndex = 20;
             this.btusuarios.Text = "Usuarios";
@@ -108,20 +149,16 @@
             // bttiendas
             // 
             this.bttiendas.BorderRadius = 5;
-            this.bttiendas.CheckedState.Parent = this.bttiendas;
-            this.bttiendas.CustomImages.Parent = this.bttiendas;
             this.bttiendas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(72)))));
             this.bttiendas.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bttiendas.ForeColor = System.Drawing.Color.White;
             this.bttiendas.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
-            this.bttiendas.HoverState.Parent = this.bttiendas;
             this.bttiendas.Image = global::RegisterStore.Properties.Resources.icono_inventario_blanco;
             this.bttiendas.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bttiendas.ImageOffset = new System.Drawing.Point(3, 0);
             this.bttiendas.ImageSize = new System.Drawing.Size(25, 25);
             this.bttiendas.Location = new System.Drawing.Point(9, 356);
             this.bttiendas.Name = "bttiendas";
-            this.bttiendas.ShadowDecoration.Parent = this.bttiendas;
             this.bttiendas.Size = new System.Drawing.Size(180, 45);
             this.bttiendas.TabIndex = 19;
             this.bttiendas.Text = "Tiendas";
@@ -132,20 +169,16 @@
             // btventas
             // 
             this.btventas.BorderRadius = 5;
-            this.btventas.CheckedState.Parent = this.btventas;
-            this.btventas.CustomImages.Parent = this.btventas;
             this.btventas.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(72)))));
             this.btventas.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btventas.ForeColor = System.Drawing.Color.White;
             this.btventas.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
-            this.btventas.HoverState.Parent = this.btventas;
             this.btventas.Image = global::RegisterStore.Properties.Resources.icono_ventas_blanco;
             this.btventas.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btventas.ImageOffset = new System.Drawing.Point(3, 0);
             this.btventas.ImageSize = new System.Drawing.Size(25, 25);
             this.btventas.Location = new System.Drawing.Point(9, 410);
             this.btventas.Name = "btventas";
-            this.btventas.ShadowDecoration.Parent = this.btventas;
             this.btventas.Size = new System.Drawing.Size(180, 45);
             this.btventas.TabIndex = 18;
             this.btventas.Text = "Ventas";
@@ -153,64 +186,19 @@
             this.btventas.TextOffset = new System.Drawing.Point(10, 0);
             this.btventas.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
-            // pnfecha
-            // 
-            this.pnfecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pnfecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(72)))));
-            this.pnfecha.Controls.Add(this.lbfecha);
-            this.pnfecha.Controls.Add(this.lbhora);
-            this.pnfecha.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
-            this.pnfecha.Location = new System.Drawing.Point(0, 488);
-            this.pnfecha.Name = "pnfecha";
-            this.pnfecha.ShadowDecoration.Parent = this.pnfecha;
-            this.pnfecha.Size = new System.Drawing.Size(200, 95);
-            this.pnfecha.TabIndex = 8;
-            // 
-            // lbfecha
-            // 
-            this.lbfecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbfecha.BackColor = System.Drawing.Color.Transparent;
-            this.lbfecha.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbfecha.ForeColor = System.Drawing.Color.White;
-            this.lbfecha.Location = new System.Drawing.Point(2, 47);
-            this.lbfecha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbfecha.Name = "lbfecha";
-            this.lbfecha.Size = new System.Drawing.Size(198, 44);
-            this.lbfecha.TabIndex = 12;
-            this.lbfecha.Text = "dd/MM/AA";
-            this.lbfecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbhora
-            // 
-            this.lbhora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbhora.BackColor = System.Drawing.Color.Transparent;
-            this.lbhora.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbhora.ForeColor = System.Drawing.Color.White;
-            this.lbhora.Location = new System.Drawing.Point(2, 3);
-            this.lbhora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbhora.Name = "lbhora";
-            this.lbhora.Size = new System.Drawing.Size(198, 44);
-            this.lbhora.TabIndex = 11;
-            this.lbhora.Text = "00:\'00 aa";
-            this.lbhora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btpedidos
             // 
             this.btpedidos.BorderRadius = 5;
-            this.btpedidos.CheckedState.Parent = this.btpedidos;
-            this.btpedidos.CustomImages.Parent = this.btpedidos;
             this.btpedidos.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(72)))));
             this.btpedidos.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btpedidos.ForeColor = System.Drawing.Color.White;
             this.btpedidos.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
-            this.btpedidos.HoverState.Parent = this.btpedidos;
             this.btpedidos.Image = global::RegisterStore.Properties.Resources.icono_pedidos_blanco;
             this.btpedidos.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btpedidos.ImageOffset = new System.Drawing.Point(3, 0);
             this.btpedidos.ImageSize = new System.Drawing.Size(25, 25);
             this.btpedidos.Location = new System.Drawing.Point(9, 302);
             this.btpedidos.Name = "btpedidos";
-            this.btpedidos.ShadowDecoration.Parent = this.btpedidos;
             this.btpedidos.Size = new System.Drawing.Size(180, 45);
             this.btpedidos.TabIndex = 17;
             this.btpedidos.Text = "Pedidos";
@@ -221,20 +209,16 @@
             // btproveedores
             // 
             this.btproveedores.BorderRadius = 5;
-            this.btproveedores.CheckedState.Parent = this.btproveedores;
-            this.btproveedores.CustomImages.Parent = this.btproveedores;
             this.btproveedores.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(72)))));
             this.btproveedores.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btproveedores.ForeColor = System.Drawing.Color.White;
             this.btproveedores.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
-            this.btproveedores.HoverState.Parent = this.btproveedores;
             this.btproveedores.Image = global::RegisterStore.Properties.Resources.icono_proveedores_blanco_32;
             this.btproveedores.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btproveedores.ImageOffset = new System.Drawing.Point(3, 0);
             this.btproveedores.ImageSize = new System.Drawing.Size(25, 25);
             this.btproveedores.Location = new System.Drawing.Point(9, 140);
             this.btproveedores.Name = "btproveedores";
-            this.btproveedores.ShadowDecoration.Parent = this.btproveedores;
             this.btproveedores.Size = new System.Drawing.Size(180, 45);
             this.btproveedores.TabIndex = 16;
             this.btproveedores.Text = "Proveedores";
@@ -270,20 +254,16 @@
             // btproductos
             // 
             this.btproductos.BorderRadius = 5;
-            this.btproductos.CheckedState.Parent = this.btproductos;
-            this.btproductos.CustomImages.Parent = this.btproductos;
             this.btproductos.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(72)))));
             this.btproductos.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btproductos.ForeColor = System.Drawing.Color.White;
             this.btproductos.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
-            this.btproductos.HoverState.Parent = this.btproductos;
             this.btproductos.Image = global::RegisterStore.Properties.Resources.icono_producto_blanco;
             this.btproductos.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btproductos.ImageOffset = new System.Drawing.Point(3, 0);
             this.btproductos.ImageSize = new System.Drawing.Size(25, 25);
             this.btproductos.Location = new System.Drawing.Point(9, 194);
             this.btproductos.Name = "btproductos";
-            this.btproductos.ShadowDecoration.Parent = this.btproductos;
             this.btproductos.Size = new System.Drawing.Size(180, 45);
             this.btproductos.TabIndex = 13;
             this.btproductos.Text = "Productos";
@@ -297,15 +277,12 @@
             this.btsalir.BackColor = System.Drawing.Color.Transparent;
             this.btsalir.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btsalir.BorderRadius = 3;
-            this.btsalir.CheckedState.Parent = this.btsalir;
             this.btsalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btsalir.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btsalir.CustomImages.Parent = this.btsalir;
             this.btsalir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btsalir.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btsalir.ForeColor = System.Drawing.Color.White;
             this.btsalir.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btsalir.HoverState.Parent = this.btsalir;
             this.btsalir.Image = global::RegisterStore.Properties.Resources.logout_blanco_16;
             this.btsalir.ImageSize = new System.Drawing.Size(16, 16);
             this.btsalir.Location = new System.Drawing.Point(165, 14);
@@ -313,7 +290,6 @@
             this.btsalir.Name = "btsalir";
             this.btsalir.PressedColor = System.Drawing.Color.Empty;
             this.btsalir.ShadowDecoration.BorderRadius = 10;
-            this.btsalir.ShadowDecoration.Parent = this.btsalir;
             this.btsalir.Size = new System.Drawing.Size(38, 32);
             this.btsalir.TabIndex = 12;
             this.btsalir.Click += new System.EventHandler(this.btsalir_Click);
@@ -359,13 +335,13 @@
             // 
             // guna2Panel2
             // 
+            this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(32)))), ((int)(((byte)(58)))));
             this.guna2Panel2.Controls.Add(this.btcerrar);
             this.guna2Panel2.Controls.Add(this.txtusuario);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(200, 0);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
             this.guna2Panel2.Size = new System.Drawing.Size(870, 48);
             this.guna2Panel2.TabIndex = 1;
             // 
@@ -375,15 +351,12 @@
             this.btcerrar.Animated = true;
             this.btcerrar.BackColor = System.Drawing.Color.Transparent;
             this.btcerrar.BorderRadius = 3;
-            this.btcerrar.CheckedState.Parent = this.btcerrar;
             this.btcerrar.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btcerrar.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btcerrar.CustomImages.Parent = this.btcerrar;
             this.btcerrar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
             this.btcerrar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btcerrar.ForeColor = System.Drawing.Color.White;
             this.btcerrar.HoverState.FillColor = System.Drawing.Color.Red;
-            this.btcerrar.HoverState.Parent = this.btcerrar;
             this.btcerrar.Image = global::RegisterStore.Properties.Resources.cerrar_blanco_16;
             this.btcerrar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btcerrar.ImageSize = new System.Drawing.Size(15, 15);
@@ -395,7 +368,6 @@
             this.btcerrar.ShadowDecoration.BorderRadius = 30;
             this.btcerrar.ShadowDecoration.Depth = 100;
             this.btcerrar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btcerrar.ShadowDecoration.Parent = this.btcerrar;
             this.btcerrar.Size = new System.Drawing.Size(86, 30);
             this.btcerrar.TabIndex = 7;
             this.btcerrar.Text = "CERRAR";
@@ -404,15 +376,12 @@
             // 
             // txtusuario
             // 
-            this.txtusuario.CheckedState.Parent = this.txtusuario;
             this.txtusuario.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtusuario.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtusuario.CustomImages.Parent = this.txtusuario;
             this.txtusuario.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
             this.txtusuario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtusuario.ForeColor = System.Drawing.Color.White;
             this.txtusuario.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(139)))), ((int)(((byte)(255)))));
-            this.txtusuario.HoverState.Parent = this.txtusuario;
             this.txtusuario.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtusuario.Location = new System.Drawing.Point(-2, 14);
             this.txtusuario.Margin = new System.Windows.Forms.Padding(2);
@@ -421,7 +390,6 @@
             this.txtusuario.PressedDepth = 0;
             this.txtusuario.ShadowDecoration.BorderRadius = 10;
             this.txtusuario.ShadowDecoration.Depth = 50;
-            this.txtusuario.ShadowDecoration.Parent = this.txtusuario;
             this.txtusuario.Size = new System.Drawing.Size(156, 32);
             this.txtusuario.TabIndex = 6;
             this.txtusuario.Text = "USUARIO / TIPO";
@@ -429,10 +397,10 @@
             // 
             // pnescritorio
             // 
+            this.pnescritorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(32)))), ((int)(((byte)(58)))));
             this.pnescritorio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnescritorio.Location = new System.Drawing.Point(200, 48);
             this.pnescritorio.Name = "pnescritorio";
-            this.pnescritorio.ShadowDecoration.Parent = this.pnescritorio;
             this.pnescritorio.Size = new System.Drawing.Size(870, 579);
             this.pnescritorio.TabIndex = 2;
             // 
@@ -450,13 +418,14 @@
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            this.pnfecha.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -479,11 +448,11 @@
         private Guna.UI2.WinForms.Guna2Button btpedidos;
         public System.Windows.Forms.Label lbtienda;
         private System.Windows.Forms.Timer Reloj;
-        private Guna.UI2.WinForms.Guna2Panel pnfecha;
         public System.Windows.Forms.Label lbfecha;
         public System.Windows.Forms.Label lbhora;
         private Guna.UI2.WinForms.Guna2Button btventas;
         private Guna.UI2.WinForms.Guna2Button bttiendas;
         private Guna.UI2.WinForms.Guna2Button btusuarios;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

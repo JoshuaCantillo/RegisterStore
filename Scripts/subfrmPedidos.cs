@@ -1,13 +1,6 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
@@ -34,7 +27,7 @@ namespace RegisterStore.Scripts
 
             tbpedidos.DataSource = null;
 
-            tbpedidos.DataSource = pedidos.buscar_pedido(arg,tienda);
+            tbpedidos.DataSource = pedidos.buscar_pedido(arg, tienda);
 
             //Ocultando las columnas inecesarias
 
@@ -82,9 +75,9 @@ namespace RegisterStore.Scripts
             int idProveedor = Int32.Parse(tbpedidos.Rows[e.RowIndex].Cells[1].Value.ToString());
             int idPedido = Int32.Parse(tbpedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
             int Total = Int32.Parse(tbpedidos.Rows[e.RowIndex].Cells[2].Value.ToString());
-            int Subtotal = Int32.Parse(tbpedidos.Rows[e.RowIndex].Cells[3].Value.ToString()); 
-            int Descuento= Int32.Parse(tbpedidos.Rows[e.RowIndex].Cells[4].Value.ToString());
-            string Fecha=tbpedidos.Rows[e.RowIndex].Cells[5].Value.ToString();
+            int Subtotal = Int32.Parse(tbpedidos.Rows[e.RowIndex].Cells[3].Value.ToString());
+            int Descuento = Int32.Parse(tbpedidos.Rows[e.RowIndex].Cells[4].Value.ToString());
+            string Fecha = tbpedidos.Rows[e.RowIndex].Cells[5].Value.ToString();
             string Hora = tbpedidos.Rows[e.RowIndex].Cells[6].Value.ToString();
             string Estado = tbpedidos.Rows[e.RowIndex].Cells[7].Value.ToString();
             string Pago = tbpedidos.Rows[e.RowIndex].Cells[8].Value.ToString();
@@ -95,7 +88,7 @@ namespace RegisterStore.Scripts
 
             pedidos.accion = "EDITAR";
 
-            pedidos.txtbuscar.Enabled = false;
+            pedidos.txtbuscar.ReadOnly = true;
 
             pedidos.buscar_proveedor(nombre);
             pedidos.lbidpedido.Text = idPedido.ToString();
@@ -103,13 +96,24 @@ namespace RegisterStore.Scripts
             pedidos.txttotal.Text = Total.ToString("N", new CultureInfo("es-CO"));
             pedidos.txtsubtotal.Text = Subtotal.ToString("N", new CultureInfo("es-CO"));
             pedidos.txtdescuento.Text = Descuento.ToString();
-            pedidos.btañadir.Enabled = false;
-            pedidos.cbestado.SelectedItem = Estado;
-            pedidos.tbproductos.Enabled = false;
 
-            pedidos.bteditar.Enabled = true;
+            pedidos.btañadir.Enabled = false;
+
+            if (Estado.Equals("RECIBIDO") || Estado.Equals("PAGADO"))
+            {
+                pedidos.bteditar.Enabled = false;
+            }
+
+            pedidos.btconfirmar.Enabled = false;
+            pedidos.tbproductos.Enabled = false;
+            pedidos.tbproveedores.Enabled = false;
+
+            pedidos.txtbuscar.ReadOnly = true;
+            pedidos.txtdescuento.ReadOnly = true;
+
             pedidos.bteliminar.Enabled = true;
-            pedidos.btbuscar.Enabled = false;
+
+            pedidos.cbestado.Enabled = false;
 
             llenar_productos(idPedido);
 

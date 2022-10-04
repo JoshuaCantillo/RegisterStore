@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="registerstoreDataSet" targetNamespace="http://tempuri.org/registerstoreDataSet.xsd" xmlns:mstns="http://tempuri.org/registerstoreDataSet.xsd" xmlns="http://tempuri.org/registerstoreDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="_registerstore_dbDataSet1" targetNamespace="http://tempuri.org/_registerstore_dbDataSet1.xsd" xmlns:mstns="http://tempuri.org/_registerstore_dbDataSet1.xsd" xmlns="http://tempuri.org/_registerstore_dbDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="registerstoreConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="registerstoreConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.RegisterStore.Properties.Settings.GlobalReference.Default.registerstoreConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="registerstore_dbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="registerstore_dbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.RegisterStore.Properties.Settings.GlobalReference.Default.registerstore_dbConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tiendasTableAdapter" GeneratorDataComponentClassName="tiendasTableAdapter" Name="tiendas" UserDataComponentName="tiendasTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="registerstoreConnectionString (Settings)" DbObjectName="registerstore.dbo.tiendas" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="registerstore_dbConnectionString (Settings)" DbObjectName="[registerstore-db].dbo.tiendas" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT nombre FROM dbo.tiendas</CommandText>
@@ -28,7 +28,7 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="registerstoreDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="registerstoreDataSet" msprop:Generator_DataSetName="registerstoreDataSet">
+  <xs:element name="_registerstore_dbDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="_registerstore_dbDataSet1" msprop:Generator_DataSetName="_registerstore_dbDataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="tiendas" msprop:Generator_RowEvHandlerName="tiendasRowChangeEventHandler" msprop:Generator_RowDeletedName="tiendasRowDeleted" msprop:Generator_RowDeletingName="tiendasRowDeleting" msprop:Generator_RowEvArgName="tiendasRowChangeEvent" msprop:Generator_TablePropName="tiendas" msprop:Generator_RowChangedName="tiendasRowChanged" msprop:Generator_RowChangingName="tiendasRowChanging" msprop:Generator_TableClassName="tiendasDataTable" msprop:Generator_RowClassName="tiendasRow" msprop:Generator_TableVarName="tabletiendas" msprop:Generator_UserTableName="tiendas">
@@ -37,7 +37,7 @@
               <xs:element name="nombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_UserColumnName="nombre">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
+                    <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

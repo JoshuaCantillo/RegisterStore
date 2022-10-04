@@ -1,28 +1,20 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
 {
     public partial class frmProductos : Form
     {
-        public int fila;
+
         public string tienda;
+        public int fila;
         public frmProductos(string tienda)
         {
             InitializeComponent();
             this.tienda = tienda;
             resetear();
-
-            txtbuscar.Focus();
         }
 
         public void resetear()
@@ -33,11 +25,10 @@ namespace RegisterStore.Scripts
             txtbuscar.Focus();
             buscar_producto("");
         }
-
         public void buscar_producto(string arg)
         {
             Productos productos = new Productos();
-            Dashboard ds= Owner as Dashboard;
+            Dashboard ds = Owner as Dashboard;
             productos.Tienda = tienda;
             //Asignando los datos al datagrid
 
@@ -65,7 +56,7 @@ namespace RegisterStore.Scripts
 
         public string darFormato(string srt)
         {
-            string retorno="";
+            string retorno = "";
             try
             {
 
@@ -78,9 +69,11 @@ namespace RegisterStore.Scripts
             }
             catch (Exception ex)
             {
+                System.Console.WriteLine(ex.ToString());
             }
             return retorno;
         }
+
         public void llenar_campos(int index)
         {
             if (tbproductos.RowCount != 0)
@@ -88,17 +81,17 @@ namespace RegisterStore.Scripts
                 lbid.Text = tbproductos.Rows[index].Cells[0].Value.ToString();
                 lbproducto.Text = tbproductos.Rows[index].Cells[2].Value.ToString();
                 txtlaboratorio.Text = tbproductos.Rows[index].Cells[3].Value.ToString();
-                txtpresentacion.Text= tbproductos.Rows[index].Cells[4].Value.ToString();
+                txtpresentacion.Text = tbproductos.Rows[index].Cells[4].Value.ToString();
                 txtcantidad.Text = tbproductos.Rows[index].Cells[5].Value.ToString();
-                txtprecio.Text ="$ "+ darFormato(tbproductos.Rows[index].Cells[7].Value.ToString());
-                txtdisponibles.Text = tbproductos.Rows[index].Cells[9].Value.ToString()+" Unid.";
+                txtprecio.Text = "$ " + darFormato(tbproductos.Rows[index].Cells[7].Value.ToString());
+                txtdisponibles.Text = tbproductos.Rows[index].Cells[9].Value.ToString() + " Unid.";
                 fila = index;
             }
         }
 
         private void btinspeccionar_Click(object sender, EventArgs e)
         {
-            if (tbproductos.Rows.Count!=0)
+            if (tbproductos.Rows.Count != 0)
             {
                 subfrmProductos addProductos = new subfrmProductos();
                 AddOwnedForm(addProductos);
@@ -143,14 +136,29 @@ namespace RegisterStore.Scripts
             addProductos.ShowDialog();
         }
 
-        private void btresetear_Click(object sender, EventArgs e)
-        {
-            resetear();
-        }
-
         private void tbproductos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             llenar_campos(e.RowIndex);
+        }
+
+        private void btbuscar_Click(object sender, EventArgs e)
+        {
+            int index = tbproductos.CurrentRow.Index;
+
+            string codigo = tbproductos.Rows[index].Cells[1].Value.ToString();
+
+            verificarExistencias existencias = new verificarExistencias();
+            AddOwnedForm(existencias);
+
+            existencias.buscar_producto(codigo);
+
+            existencias.ShowDialog();
+
+        }
+
+        private void btborrar_Click(object sender, EventArgs e)
+        {
+            txtbuscar.Text = "";
         }
     }
 }

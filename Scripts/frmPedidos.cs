@@ -1,19 +1,14 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
 {
     public partial class frmPedidos : Form
     {
+
+
         public string tienda;
 
         public string accion;
@@ -25,14 +20,13 @@ namespace RegisterStore.Scripts
 
 
 
+
         public frmPedidos(string tienda)
         {
             InitializeComponent();
             this.tienda = tienda;
             resetear();
-            this.ActiveControl = txtbuscar;
         }
-
 
         public void resetear()
         {
@@ -47,19 +41,23 @@ namespace RegisterStore.Scripts
 
             btconfirmar.Enabled = false;
 
-            txttotal.Text = "$ 0,00";
-            txtsubtotal.Text = "$ 0,00";
+            txttotal.Text = "$ 0";
+            txtsubtotal.Text = "$ 0";
             txtdescuento.Text = "0";
             txtbuscar.Enabled = true;
+
+            bteditar.Text = "EDITAR";
+            bteliminar.Text = "ELIMINAR";
 
             btconfirmar.Enabled = false;
             bteditar.Enabled = false;
             bteliminar.Enabled = false;
-            btbuscar.Enabled = true;
             btañadir.Enabled = true;
-
+            btbuscar.Enabled = true;
             cbestado.Enabled = false;
-            txtdescuento.Enabled = false;
+            txtdescuento.ReadOnly = true;
+            txttotal.ReadOnly = true;
+            txtsubtotal.ReadOnly = true;
 
             accion = "nuevo";
 
@@ -68,6 +66,21 @@ namespace RegisterStore.Scripts
             {
                 lbidproveedor.Text = tbproveedores.Rows[0].Cells[0].Value.ToString();
             }
+        }
+
+        public string eliminar_formato(string texto)
+        {
+            string noFormat = "";
+
+            string[] charsToRemove = new string[] { "@", ".", ";", "'", "%", "$", " " };
+            foreach (var c in charsToRemove)
+            {
+                texto = texto.Replace(c, string.Empty);
+            }
+
+            noFormat = texto;
+
+            return noFormat;
         }
 
         public void limpiar_tabla()
@@ -135,50 +148,71 @@ namespace RegisterStore.Scripts
 
 
 
-        public bool recorrer_tabla()
+        public bool recorrer_tabla(string funcion)
         {
             bool respuesta = false;
 
-            for (int i = 0; i < tbproductos.Rows.Count; i++)
+            Pedidos pedidos = new Pedidos();
+
+            if (funcion.Equals("editar"))
             {
-                Pedidos pedidos = new Pedidos();
-
-                pedidos.Iproveedor = Int32.Parse(lbidproveedor.Text);
-
-                pedidos.Idproducto = Int32.Parse(tbproductos.Rows[i].Cells[0].Value.ToString());
 
 
+                pedidos.Idpedido = Int32.Parse(lbidpedido.Text);
 
-                pedidos.Unidades = Int32.Parse(tbproductos.Rows[i].Cells[7].Value.ToString());
-                pedidos.Compra = Int32.Parse(tbproductos.Rows[i].Cells[6].Value.ToString());
-                pedidos.Descuento = Int32.Parse(tbproductos.Rows[i].Cells[8].Value.ToString());
-                pedidos.Total = Int32.Parse(tbproductos.Rows[i].Cells[9].Value.ToString());
-                pedidos.Subtotal = Int32.Parse(tbproductos.Rows[i].Cells[10].Value.ToString());
-
-                pedidos.Estado = cbestado.SelectedItem.ToString();
-
-                if (pedidos.registrar_subpedido())
+                if (pedidos.eliminar_subpedido())
                 {
-                    respuesta = true;
+                    for (int i = 0; i < tbproductos.Rows.Count; i++)
+                    {
+
+                        pedidos.Iproveedor = Int32.Parse(lbidproveedor.Text);
+
+                        pedidos.Idproducto = Int32.Parse(tbproductos.Rows[i].Cells[0].Value.ToString());
+
+
+
+                        pedidos.Unidades = Int32.Parse(tbproductos.Rows[i].Cells[7].Value.ToString());
+                        pedidos.Compra = Int32.Parse(tbproductos.Rows[i].Cells[6].Value.ToString());
+                        pedidos.Descuento = Int32.Parse(tbproductos.Rows[i].Cells[8].Value.ToString());
+                        pedidos.Total = Int32.Parse(tbproductos.Rows[i].Cells[9].Value.ToString());
+                        pedidos.Subtotal = Int32.Parse(tbproductos.Rows[i].Cells[10].Value.ToString());
+
+                        pedidos.Estado = cbestado.SelectedItem.ToString();
+
+                        if (pedidos.modificar_subpedido())
+                        {
+                            respuesta = true;
+                        }
+                    }
                 }
+                else
+                {
+                    for (int i = 0; i < tbproductos.Rows.Count; i++)
+                    {
 
+                        pedidos.Iproveedor = Int32.Parse(lbidproveedor.Text);
+
+                        pedidos.Idproducto = Int32.Parse(tbproductos.Rows[i].Cells[0].Value.ToString());
+
+
+
+                        pedidos.Unidades = Int32.Parse(tbproductos.Rows[i].Cells[7].Value.ToString());
+                        pedidos.Compra = Int32.Parse(tbproductos.Rows[i].Cells[6].Value.ToString());
+                        pedidos.Descuento = Int32.Parse(tbproductos.Rows[i].Cells[8].Value.ToString());
+                        pedidos.Total = Int32.Parse(tbproductos.Rows[i].Cells[9].Value.ToString());
+                        pedidos.Subtotal = Int32.Parse(tbproductos.Rows[i].Cells[10].Value.ToString());
+
+                        pedidos.Estado = cbestado.SelectedItem.ToString();
+
+                        if (pedidos.registrar_subpedido())
+                        {
+                            respuesta = true;
+                        }
+                    }
+                }
             }
-
             return respuesta;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         private void btañadir_Click(object sender, EventArgs e)
@@ -197,14 +231,8 @@ namespace RegisterStore.Scripts
             txtdescuento.Text = "0";
         }
 
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void tbproductos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
             int precio = int.Parse(tbproductos.Rows[e.RowIndex].Cells[6].Value.ToString());
             int unidades = int.Parse(tbproductos.Rows[e.RowIndex].Cells[7].Value.ToString());
             float descuento = float.Parse(tbproductos.Rows[e.RowIndex].Cells[8].Value.ToString()) / 100;
@@ -223,29 +251,9 @@ namespace RegisterStore.Scripts
             sumar();
         }
 
-        private void pninfo_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void txtdescuento_Leave(object sender, EventArgs e)
         {
             sumar();
-        }
-
-        private void tbproductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void tbproductos_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void btcancelar_Click(object sender, EventArgs e)
-        {
-            resetear();
         }
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
@@ -255,68 +263,70 @@ namespace RegisterStore.Scripts
 
         private void btconfirmar_Click(object sender, EventArgs e)
         {
-            try
+            if (tbproductos.RowCount > 0)
             {
-                Dashboard ds = Owner as Dashboard;
-                Pedidos pedidos = new Pedidos();
-
-                string total = txttotal.Text;
-                string subtotal = txtsubtotal.Text;
-                total = total.Replace("$", string.Empty);
-                subtotal = subtotal.Replace("$", string.Empty);
-
-                total = total.Replace(" ", string.Empty);
-                subtotal = subtotal.Replace(" ", string.Empty);
-
-                pedidos.Iproveedor = Int32.Parse(lbidproveedor.Text);
-                pedidos.Total = float.Parse(total);
-                pedidos.Subtotal = float.Parse(subtotal);
-                pedidos.Fecha = fecha;
-                pedidos.Hora = hora;
-                pedidos.Estado = cbestado.SelectedItem.ToString();
-                pedidos.Descuento = Int32.Parse(txtdescuento.Text);
-
-                if (cbestado.SelectedItem.ToString().Equals("PAGADO"))
+                try
                 {
-                    pedidos.Pago = pedidos.Fecha;
-                }
-                else
-                {
-                    pedidos.Pago = "PENDIENTE";
-                }
+                    Dashboard ds = Owner as Dashboard;
+                    Pedidos pedidos = new Pedidos();
 
-                pedidos.Tienda = tienda;
+                    string total = txttotal.Text;
+                    string subtotal = txtsubtotal.Text;
+                    total = total.Replace("$", string.Empty);
+                    subtotal = subtotal.Replace("$", string.Empty);
 
+                    total = total.Replace(" ", string.Empty);
+                    subtotal = subtotal.Replace(" ", string.Empty);
 
-                if (pedidos.registrar_pedido())
-                {
-                    if (recorrer_tabla())
+                    pedidos.Iproveedor = Int32.Parse(lbidproveedor.Text);
+                    pedidos.Total = float.Parse(total);
+                    pedidos.Subtotal = float.Parse(subtotal);
+                    pedidos.Fecha = fecha;
+                    pedidos.Hora = hora;
+                    pedidos.Estado = cbestado.SelectedItem.ToString();
+                    pedidos.Descuento = Int32.Parse(txtdescuento.Text);
+
+                    if (cbestado.SelectedItem.ToString().Equals("PAGADO"))
                     {
-                        MessageBox.Show("Se registró el pedido correctamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        pedidos.Pago = pedidos.Fecha;
+                    }
+                    else if (cbestado.SelectedItem.ToString().Equals("PENDIENTE"))
+                    {
+                        pedidos.Fecha = "SIN CONFIRMAR";
+                        pedidos.Hora = "SIN CONFIRMAR";
+                    }
+                    else
+                    {
+                        pedidos.Pago = "PENDIENTE";
+                    }
+
+                    pedidos.Tienda = tienda;
 
 
-                        resetear();
+                    if (pedidos.registrar_pedido())
+                    {
+                        if (recorrer_tabla("registrar"))
+                        {
+                            MessageBox.Show("Se registró el pedido correctamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                            resetear();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al registrar el pedido,por favor intente nuevamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Ocurrió un error al registrar el pedido,por favor intente nuevamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió un error al registrar el pedido,por favor intente nuevamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ocurrió el siguiente error: " + ex.ToString(), "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió el siguiente error: " + ex.ToString(), "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void reloj_Tick(object sender, EventArgs e)
-        {
-            hora = DateTime.Now.ToString("hh:mm tt");
-            fecha = DateTime.Now.ToShortDateString();
         }
 
         private void tbproductos_KeyDown(object sender, KeyEventArgs e)
@@ -338,25 +348,129 @@ namespace RegisterStore.Scripts
             subpedidos.ShowDialog();
         }
 
-        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void bteditar_Click(object sender, EventArgs e)
         {
             if (bteditar.Text.Equals("EDITAR"))
             {
-                tbproductos.Enabled = true;
-                btañadir.Enabled = true;
+                if (!cbestado.SelectedItem.ToString().Equals("RECIBIDO") || !cbestado.SelectedItem.ToString().Equals("PAGADO"))
+                {
+                    tbproductos.Enabled = true;
+                    btañadir.Enabled = true;
+                    bteliminar.Enabled = false;
 
-                txtdescuento.Enabled = true;
+                    txtdescuento.ReadOnly = false;
 
-                cbestado.Enabled = true;
-                bteditar.Text = "GUARDAR";
+                    cbestado.Enabled = true;
 
-                bteliminar.Enabled = false;
+                    bteditar.Text = "GUARDAR";
+                }
 
+
+            }
+            else
+            {
+                if (tbproductos.RowCount > 0)
+                {
+                    Pedidos pedidos = new Pedidos();
+                    pedidos.Idpedido = int.Parse(lbidpedido.Text);
+                    pedidos.Total = float.Parse(eliminar_formato(txttotal.Text));
+                    pedidos.Subtotal = float.Parse(eliminar_formato(txtsubtotal.Text));
+                    pedidos.Descuento = int.Parse(eliminar_formato(txtdescuento.Text));
+                    pedidos.Fecha = fecha;
+                    pedidos.Hora = hora;
+                    pedidos.Estado = cbestado.SelectedItem.ToString();
+                    pedidos.Pago = fecha;
+
+                    try
+                    {
+                        if (pedidos.modificar_pedido())
+                        {
+                            if (recorrer_tabla("editar"))
+                            {
+                                MessageBox.Show("Se modificó el pedido correctamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                                resetear();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrió un error al modificar el pedido,por favor intente nuevamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al modificar el pedido,por favor intente nuevamente", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Console.WriteLine(ex.ToString());
+                    }
+                }
+            }
+        }
+
+        private void reloj_Tick(object sender, EventArgs e)
+        {
+            hora = DateTime.Now.ToString("hh:mm tt");
+            fecha = DateTime.Now.ToShortDateString();
+        }
+
+        private void btcancelar_Click(object sender, EventArgs e)
+        {
+            resetear();
+        }
+
+        private void bteliminar_Click(object sender, EventArgs e)
+        {
+            if (bteliminar.Text.Equals("ELIMINAR"))
+            {
+                bteditar.Enabled = false;
+                btañadir.Enabled = false;
+                btbuscar.Enabled = false;
+                btconfirmar.Enabled = false;
+
+                txtdescuento.ReadOnly = true;
+                txtbuscar.ReadOnly = true;
+
+                tbproductos.Enabled = false;
+                tbproveedores.Enabled = false;
+
+                bteliminar.Text = "CONFIRMAR";
+
+            }
+            else
+            {
+                if (MessageBox.Show("¿Desea eliminar el pedido?", "RegisterStore", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        Pedidos pedidos = new Pedidos();
+
+                        pedidos.Idpedido = int.Parse(lbidpedido.Text);
+
+                        if (pedidos.eliminar_pedido())
+                        {
+                            if (pedidos.eliminar_subpedido())
+                            {
+                                MessageBox.Show("Se eliminó correctamente el pedido", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrió un error al tratar de eliminar los productos del pedido", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al tratar de eliminar el pedido", "RegisterStore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        resetear();
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Console.WriteLine(ex.ToString());
+                    }
+                }
             }
         }
     }

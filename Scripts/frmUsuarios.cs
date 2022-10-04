@@ -1,12 +1,5 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
@@ -17,17 +10,14 @@ namespace RegisterStore.Scripts
         {
             InitializeComponent();
             resetear();
-
-            this.ActiveControl = txtbuscar;
         }
-
         public void resetear()
         {
             buscar_usuarios("");
             llenar_campos(0);
 
-            txtnombre.Enabled = false;
-            txtclave.Enabled = false;
+            txtnombre.ReadOnly = true;
+            txtclave.ReadOnly = true;
             cbtienda.Enabled = false;
             cbtipo.Enabled = false;
 
@@ -41,6 +31,7 @@ namespace RegisterStore.Scripts
 
         }
 
+
         public void llenar_campos(int index)
         {
             if (tbusuarios.RowCount != 0)
@@ -49,7 +40,7 @@ namespace RegisterStore.Scripts
                 txtnombre.Text = tbusuarios.Rows[index].Cells[1].Value.ToString();
                 txtclave.Text = tbusuarios.Rows[index].Cells[2].Value.ToString();
                 cbtipo.Text = tbusuarios.Rows[index].Cells[3].Value.ToString();
-                cbtienda.Text= tbusuarios.Rows[index].Cells[4].Value.ToString();
+                cbtienda.Text = tbusuarios.Rows[index].Cells[4].Value.ToString();
             }
         }
 
@@ -73,33 +64,22 @@ namespace RegisterStore.Scripts
 
         }
 
-        private void frmUsuarios_Load(object sender, EventArgs e)
-        {
-            // TODO: esta línea de código carga datos en la tabla '_registerstore_dbDataSet.tiendas' Puede moverla o quitarla según sea necesario.
-            this.tiendasTableAdapter1.Fill(this._registerstore_dbDataSet.tiendas);
-            // TODO: esta línea de código carga datos en la tabla 'registerstoreDataSet.tiendas' Puede moverla o quitarla según sea necesario.
-            this.tiendasTableAdapter.Fill(this.registerstoreDataSet.tiendas);
-
-            txtnombre.PlaceholderText = "NOMBRE USUARIO";
-            txtclave.PlaceholderText = "*******";
-        }
-
         private void btagregar_Click(object sender, EventArgs e)
         {
             if (btagregar.Text.Equals("AGREGAR"))
             {
-                btagregar.Text="GUARDAR";
+                btagregar.Text = "GUARDAR";
 
                 txtnombre.Text = "";
                 txtclave.Text = "";
 
-                
+
 
                 bteditar.Enabled = false;
                 bteliminar.Enabled = false;
 
-                txtnombre.Enabled = true;
-                txtclave.Enabled = true;
+                txtnombre.ReadOnly = false;
+                txtclave.ReadOnly = false;
                 cbtienda.Enabled = true;
                 cbtipo.Enabled = true;
 
@@ -134,23 +114,23 @@ namespace RegisterStore.Scripts
             }
         }
 
-        private void tbusuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            llenar_campos(e.RowIndex);
-        }
-
         private void txtbuscar_TextChanged(object sender, EventArgs e)
         {
             buscar_usuarios(txtbuscar.Text);
             llenar_campos(0);
         }
 
+        private void tbusuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            llenar_campos(e.RowIndex);
+        }
+
         private void bteditar_Click(object sender, EventArgs e)
         {
             if (bteditar.Text.Equals("EDITAR"))
             {
-                txtnombre.Enabled = true;
-                txtclave.Enabled = true;
+                txtnombre.ReadOnly = false;
+                txtclave.ReadOnly = false;
                 cbtienda.Enabled = true;
                 cbtipo.Enabled = true;
 
@@ -207,7 +187,7 @@ namespace RegisterStore.Scripts
             }
             else
             {
-                if ((MessageBox.Show("¿Desea eliminar el usuario?", "RegisterStore", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) && tbusuarios.Rows.Count!=1)
+                if ((MessageBox.Show("¿Desea eliminar el usuario?", "RegisterStore", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) && tbusuarios.Rows.Count != 1)
                 {
                     Usuarios usuarios = new Usuarios();
                     usuarios.Idusuario = Int32.Parse(lbid.Text);
@@ -226,8 +206,20 @@ namespace RegisterStore.Scripts
                 {
                     resetear();
                 }
-                    
+
             }
+        }
+
+        private void frmUsuarios_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla '_registerstore_dbDataSet1.tiendas' Puede moverla o quitarla según sea necesario.
+            this.tiendasTableAdapter.Fill(this._registerstore_dbDataSet1.tiendas);
+
+        }
+
+        private void btcancelar_Click(object sender, EventArgs e)
+        {
+            resetear();
         }
     }
 }

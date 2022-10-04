@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
@@ -32,7 +25,7 @@ namespace RegisterStore.Scripts
                 sub.TopLevel = false;
                 sub.Dock = DockStyle.Fill;
                 this.pnescritorio.Controls.Add(sub);
-                this.pnescritorio.Tag = sub;    
+                this.pnescritorio.Tag = sub;
                 sub.Show();
             }
             else
@@ -65,7 +58,7 @@ namespace RegisterStore.Scripts
 
         private void btcerrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Está seguro de cerrar la aplicación", "RegisterStore", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Está seguro de cerrar la aplicación", "RegisterStore", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegisterStore.Logic
 {
@@ -75,7 +71,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(String.Format("SELECT * FROM proveedores  WHERE nombre like '%" + arg + "%'or empresa like '%"+arg+"%' "), conexion.conectar());
+                SqlCommand sql = new SqlCommand(String.Format("SELECT * FROM proveedores  WHERE nombre like '%" + arg + "%'or empresa like '%" + arg + "%' "), conexion.conectar());
                 SqlDataReader rd = sql.ExecuteReader();
                 while (rd.Read())
                 {
@@ -132,7 +128,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO proveedores(nombre,tipo,empresa,celular) values('{0}','{1}','{2}','{3}')", Nombre.ToUpper(),Tipo.ToUpper(), Empresa.ToUpper(),Celular), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO proveedores(nombre,tipo,empresa,celular) values('{0}','{1}','{2}','{3}')", Nombre.ToUpper(), Tipo.ToUpper(), Empresa.ToUpper(), Celular), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     confirmacion = true;
@@ -152,8 +148,8 @@ namespace RegisterStore.Logic
         {
             try
             {
-                
-                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO subproveedores(idproveedor,idproducto) values('{0}','{1}')",Idproveedor, Idproducto), conexion.conectar());
+
+                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO subproveedores(idproveedor,idproducto) values('{0}','{1}')", Idproveedor, Idproducto), conexion.conectar());
                 sql.ExecuteNonQuery();
 
             }
@@ -190,7 +186,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("UPDATE proveedores SET nombre='{0}',tipo='{1}',empresa='{2}',celular='{3}' where idproveedor='{4}'", Nombre.ToUpper(),Tipo.ToUpper(), Empresa.ToUpper(), Celular,Idproveedor), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("UPDATE proveedores SET nombre='{0}',tipo='{1}',empresa='{2}',celular='{3}' where idproveedor='{4}'", Nombre.ToUpper(), Tipo.ToUpper(), Empresa.ToUpper(), Celular, Idproveedor), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     if (eliminar_registros())

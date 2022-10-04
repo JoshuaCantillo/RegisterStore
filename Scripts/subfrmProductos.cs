@@ -1,20 +1,14 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
 {
     public partial class subfrmProductos : Form
     {
-        public string accion="";
+        public string accion = "";
 
         public subfrmProductos()
         {
@@ -74,6 +68,7 @@ namespace RegisterStore.Scripts
             }
             catch (Exception ex)
             {
+                System.Console.WriteLine(ex.ToString());
             }
         }
 
@@ -110,7 +105,7 @@ namespace RegisterStore.Scripts
 
         private void btguardar_Click(object sender, EventArgs e)
         {
-            if (accion!="" && txtproducto.Text!="" && txtlaboratorio.Text != "" && txtpresentacion.Text != "" && txtcompra.Text != "" && txtventa.Text != "" && txtcantidad.Text != "" && txtiva.Text != "")
+            if (accion != "" && txtproducto.Text != "" && txtlaboratorio.Text != "" && txtpresentacion.Text != "" && txtcompra.Text != "" && txtventa.Text != "" && txtcantidad.Text != "" && txtiva.Text != "")
             {
                 Productos productos = new Productos();
                 productos.Codigo = txtcodigo.Text;
@@ -121,7 +116,7 @@ namespace RegisterStore.Scripts
                 productos.Compra = Int32.Parse(eliminar_formato(txtcompra.Text));
                 productos.Venta = Int32.Parse(eliminar_formato(txtventa.Text));
                 productos.Iva = Int32.Parse(txtiva.Text);
-                
+
                 if (accion.Equals("editar"))
                 {
 
@@ -156,7 +151,7 @@ namespace RegisterStore.Scripts
                             frmProductos pro = Owner as frmProductos;
                             pro.resetear();
                         }
-                        
+
                     }
                 }
             }

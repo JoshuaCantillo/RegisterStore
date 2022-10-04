@@ -1,12 +1,5 @@
 ﻿using RegisterStore.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RegisterStore.Scripts
@@ -39,7 +32,7 @@ namespace RegisterStore.Scripts
                 {
                     Dashboard ds = new Dashboard();
                     ds.Visible = true;
-                    ds.txtusuario.Text = txtusuario.Text.ToUpper()+ " / " + usuarios.obtener_tipo().ToUpper();
+                    ds.txtusuario.Text = txtusuario.Text.ToUpper() + " / " + usuarios.obtener_tipo().ToUpper();
                     string tienda = usuarios.obtener_tienda();
                     ds.lbtienda.Text = tienda;
                     ds.tienda = tienda;

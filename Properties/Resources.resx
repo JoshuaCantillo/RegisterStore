@@ -139,6 +139,12 @@
   <data name="contador_proveedores_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\contador_proveedores_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icono_agregar_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_agregar_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono_buscar_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_buscar_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icono_productos_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\icono_productos_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,20 +157,26 @@
   <data name="icono_pedidos_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_pedidos_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eliminar_blanco_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\eliminar_blanco_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editar_blanco_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\editar_blanco_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icono_ventas_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_ventas_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono_usuario_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_usuario_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="eliminar_blanco_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\eliminar_blanco_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono_buscar_producto_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_buscar_producto_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="editar_blanco_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\editar_blanco_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="contador_icono_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\contador_icono_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono_ventas_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_ventas_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_eye_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\icons8_eye_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logout_blanco_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\logout_blanco_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,7 +196,7 @@
   <data name="icono_cancelar_blanco_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\icono_cancelar_blanco_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_eye_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\icons8_eye_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_online_store_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\icons8_online_store_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

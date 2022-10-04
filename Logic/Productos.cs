@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegisterStore.Logic
 {
@@ -91,14 +87,14 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(String.Format("SELECT P.*, E.stock,E.tienda from productos as P INNER JOIN existencias as E ON P.idproducto=E.idproducto  WHERE (P.codigo like'%" + arg + "%' or P.nombre like '%" + arg + "%' or P.laboratorio like '%" + arg + "%') and tienda like '%"+Tienda+"%' order by nombre ASC "), conexion.conectar());
+                SqlCommand sql = new SqlCommand(String.Format("SELECT P.*, E.stock,E.tienda from productos as P INNER JOIN existencias as E ON P.idproducto=E.idproducto  WHERE (P.codigo like'%" + arg + "%' or P.nombre like '%" + arg + "%' or P.laboratorio like '%" + arg + "%') and tienda like '%" + Tienda + "%' order by nombre ASC "), conexion.conectar());
                 SqlDataReader rd = sql.ExecuteReader();
                 while (rd.Read())
                 {
 
                     //Llenando la tabla
 
-                    tabla.Rows.Add(rd.GetSqlInt32(0), rd.GetSqlString(1), rd.GetSqlString(2), rd.GetSqlString(3), rd.GetSqlString(4), rd.GetSqlString(5), rd.GetSqlInt32(6), rd.GetSqlInt32(7), rd.GetSqlInt32(8), rd.GetSqlInt32(9),rd.GetSqlString(10));
+                    tabla.Rows.Add(rd.GetSqlInt32(0), rd.GetSqlString(1), rd.GetSqlString(2), rd.GetSqlString(3), rd.GetSqlString(4), rd.GetSqlString(5), rd.GetSqlInt32(6), rd.GetSqlInt32(7), rd.GetSqlInt32(8), rd.GetSqlInt32(9), rd.GetSqlString(10));
                 }
             }
             catch (Exception ex)
@@ -114,7 +110,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO productos(codigo,nombre,laboratorio,presentacion,cantidad,compra,venta,iva) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",Codigo,Nombre.ToUpper(),Laboratorio.ToUpper(),Presentacion.ToUpper(),Cantidad.ToUpper(),Compra,Venta,Iva ), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("INSERT INTO productos(codigo,nombre,laboratorio,presentacion,cantidad,compra,venta,iva) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", Codigo, Nombre.ToUpper(), Laboratorio.ToUpper(), Presentacion.ToUpper(), Cantidad.ToUpper(), Compra, Venta, Iva), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     if (buscar_tiendas())
@@ -132,10 +128,10 @@ namespace RegisterStore.Logic
 
             return confirmacion;
         }
-        
+
         public int obtener_idproducto()
         {
-            int id=-1;
+            int id = -1;
             try
             {
                 SqlCommand cmd = new SqlCommand(String.Format("SELECT MAX(idproducto) FROM productos"), conexion.conectar());
@@ -176,7 +172,7 @@ namespace RegisterStore.Logic
             try
             {
                 int id = obtener_idproducto();
-                if (id>0)
+                if (id > 0)
                 {
 
                     SqlCommand sql = new SqlCommand(string.Format("INSERT INTO existencias(idproducto,stock,tienda) values('{0}','{1}','{2}')", id, 0, tienda), conexion.conectar());
@@ -199,7 +195,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("UPDATE productos SET codigo='{0}',nombre='{1}',laboratorio='{2}',presentacion='{3}',cantidad='{4}',compra='{5}',venta='{6}',iva='{7}' where idproducto='{8}'",Codigo,Nombre.ToUpper(),Laboratorio.ToUpper(),Presentacion.ToUpper(),Cantidad,Compra,Venta,Iva,IdProducto), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("UPDATE productos SET codigo='{0}',nombre='{1}',laboratorio='{2}',presentacion='{3}',cantidad='{4}',compra='{5}',venta='{6}',iva='{7}' where idproducto='{8}'", Codigo, Nombre.ToUpper(), Laboratorio.ToUpper(), Presentacion.ToUpper(), Cantidad, Compra, Venta, Iva, IdProducto), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     confirmacion = true;
@@ -221,7 +217,7 @@ namespace RegisterStore.Logic
 
             try
             {
-                SqlCommand sql = new SqlCommand(string.Format("DELETE FROM productos where idproducto='{0}'",IdProducto), conexion.conectar());
+                SqlCommand sql = new SqlCommand(string.Format("DELETE FROM productos where idproducto='{0}'", IdProducto), conexion.conectar());
                 if (sql.ExecuteNonQuery() != 0)
                 {
                     if (eliminar_existencias())
